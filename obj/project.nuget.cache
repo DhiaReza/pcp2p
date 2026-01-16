@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "/gmv9rCSkyU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\pcp2p.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fahre\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.2\\microsoft.entityframeworkcore.10.0.2.nupkg.sha512",
+    "C:\\Users\\fahre\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.2\\microsoft.entityframeworkcore.abstractions.10.0.2.nupkg.sha512",
+    "C:\\Users\\fahre\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.2\\microsoft.entityframeworkcore.analyzers.10.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
