@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C58C3BFF-1784-41CF-8B74-3FB49F8C7E61}|pcp2p.csproj|c:\\users\\fahre\\onedrive - universitas negeri jakarta (unj)\\documents\\perkuliahan\\personal projects\\pcp2p\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{C58C3BFF-1784-41CF-8B74-3FB49F8C7E61}|pcp2p.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C58C3BFF-1784-41CF-8B74-3FB49F8C7E61}|pcp2p.csproj|c:\\users\\fahre\\onedrive - universitas negeri jakarta (unj)\\documents\\perkuliahan\\personal projects\\pcp2p\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C58C3BFF-1784-41CF-8B74-3FB49F8C7E61}|pcp2p.csproj|solutionrelative:models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C58C3BFF-1784-41CF-8B74-3FB49F8C7E61}|pcp2p.csproj|c:\\users\\fahre\\onedrive - universitas negeri jakarta (unj)\\documents\\perkuliahan\\personal projects\\pcp2p\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C58C3BFF-1784-41CF-8B74-3FB49F8C7E61}|pcp2p.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-01-16T09:48:56.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "Models\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T09:42:54.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\fahre\\OneDrive - Universitas Negeri Jakarta (UNJ)\\Documents\\Perkuliahan\\Personal Projects\\pcp2p\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T09:39:21.708Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
