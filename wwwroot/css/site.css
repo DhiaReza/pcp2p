@@ -1,4 +1,4 @@
-html {
+/* html {
   font-size: 14px;
 }
 
@@ -15,12 +15,12 @@ html {
 html {
   position: relative;
   min-height: 100%;
-}
+} */
 
 body {
-  margin-bottom: 60px;
+  background-color: #EEFBFE;
 }
-
+/* 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
@@ -28,4 +28,5 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
-}
+} */
+

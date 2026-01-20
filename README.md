@@ -20,3 +20,7 @@ p2p = avg FPS / MSRP
 <p></p>
 <p>where :</p>
 p2p = price to performance
+
+### Todo
+1. Get GPU specs for RTX 2000, RX 5000 and up
+2. 

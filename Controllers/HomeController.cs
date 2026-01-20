@@ -10,16 +10,17 @@ namespace pcp2p.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult Cpu()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Gpu()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
+        public IActionResult Compare()
+        {
+            return View();
+        }        
     }
 }
