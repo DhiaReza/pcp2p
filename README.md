@@ -22,5 +22,8 @@ p2p = avg FPS / MSRP
 p2p = price to performance
 
 ### Todo
-1. Get GPU specs for RTX 2000, RX 5000 and up
-2. 
+1. Make admin dashboard
+2. Make view for list of hardware, brand, etc
+3. Make Brand input
+4. make hardware type input
+5. make hardware input including CPU and GPU

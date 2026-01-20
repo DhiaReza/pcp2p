@@ -21,6 +21,11 @@ namespace pcp2p.Controllers
             _context = context;
         }
         [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
         public async Task<IActionResult> Login(LoginDTO login)
         {
             var username = User.Identity.Name;
@@ -43,7 +48,7 @@ namespace pcp2p.Controllers
             {
                 return RedirectToAction("Index", "Admin"); 
             }
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            ModelState.AddModelError(string.Empty, "Wrong password or Username");
             return View(login);
         }
         public async Task<IActionResult> Logout()

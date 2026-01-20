@@ -1,16 +1,35 @@
 @{
     ViewData["Title"] = "Compare Page";
 }
+@model pcp2p.Models.LoginDTO
+
 <!DOCTYPE html>
 <html>
 <head>
     <script src="~\pcp2p\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    </div>
+    <form asp-controller="Account" asp-action="Login">
+        <div asp-validation-summary="ModelOnly" class="text-danger pt-3"></div>
+        <div class="form-group py-1">
+            <label asp-for="Username" class="col-sm-2 col-form-label text-capitalized">Username</label>
+            <div class="col-sm-10">
+                <input asp-for="Username" class="form-control" placeholder="Enter your username" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group py-1">
+            <label asp-for="Password" class="col-sm-2 col-form-label text-capitalize">Password</label>
+            <div class="col-sm-10">
+                <input asp-for="Password" class="form-control" placeholder="Enter your password" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group pt-2">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Login</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Identity;
 using pcp2p.Models;
 
@@ -92,7 +93,6 @@ namespace pcp2p
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-            // 1. Ensure roles exist
             string[] roleNames = { "Admin", "User" };
             foreach (var roleName in roleNames)
             {
@@ -102,24 +102,25 @@ namespace pcp2p
                 }
             }
 
-            // 2. Default admin credentials
-            const string adminEmail = "admin@example.com";
-            const string adminPassword = "Password123!"; // Use a strong password
+            string adminUsername = "AdminAdmin";
+            string adminPassword = "AdminAdmin0!";
 
-            var admin = await userManager.FindByEmailAsync(adminEmail);
-            if (admin == null)
-            {
-                admin = new IdentityUser 
-                { 
-                    UserName = adminEmail, 
-                    Email = adminEmail,
-                    EmailConfirmed = true 
-                };
+            var admin = new IdentityUser 
+            { 
+                UserName = adminUsername, 
+            };
                 
-                var result = await userManager.CreateAsync(admin, adminPassword);
-                if (result.Succeeded)
+            var result = await userManager.CreateAsync(admin, adminPassword);
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(admin, "Admin");
+            }
+            else
+            {
+                // Log the errors so you know why it failed
+                foreach (var error in result.Errors)
                 {
-                    await userManager.AddToRoleAsync(admin, "Admin");
+                    Console.WriteLine($"User creation failed: {error.Description}");
                 }
             }
         }  
