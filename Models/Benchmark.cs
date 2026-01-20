@@ -12,6 +12,7 @@ namespace pcp2p.Models
         public int Id {get;set;}
         public string Name {get;set;}
         public int Score {get;set;}
+        public string Description {get;set;}
         public int HardwareId {get;set;}
         public Hardware Hardware {get;set;}
     }

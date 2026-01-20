@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Identity;
 using pcp2p.Models;
 
 namespace pcp2p
@@ -12,7 +14,7 @@ namespace pcp2p
             _logger = logger;
             _context = context;
         }
-        public static void Initialize(AppDbContext context)
+        public static void InitializeData(AppDbContext context)
         {
             // Check if data already exists
             context.Database.EnsureDeleted();
@@ -84,6 +86,43 @@ namespace pcp2p
             context.Hardwares.AddRange(i9, rtx4090, rx6800xt);
             context.SaveChanges();
         }
+        public static async Task SeedRolesAndAdmin(IServiceProvider serviceProvider)
+        {
+            // Resolve the Managers from the Service Provider
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            // 1. Ensure roles exist
+            string[] roleNames = { "Admin", "User" };
+            foreach (var roleName in roleNames)
+            {
+                if (!await roleManager.RoleExistsAsync(roleName))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+
+            // 2. Default admin credentials
+            const string adminEmail = "admin@example.com";
+            const string adminPassword = "Password123!"; // Use a strong password
+
+            var admin = await userManager.FindByEmailAsync(adminEmail);
+            if (admin == null)
+            {
+                admin = new IdentityUser 
+                { 
+                    UserName = adminEmail, 
+                    Email = adminEmail,
+                    EmailConfirmed = true 
+                };
+                
+                var result = await userManager.CreateAsync(admin, adminPassword);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(admin, "Admin");
+                }
+            }
+        }  
         
     }
 }

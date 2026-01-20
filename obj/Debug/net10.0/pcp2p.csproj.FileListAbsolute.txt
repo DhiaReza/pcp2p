@@ -22,7 +22,6 @@ C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\scopedcss\bundle\pcp2p.styles.css
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\scopedcss\projectbundle\pcp2p.bundle.scp.css
-C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\qxmshwih0i-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\xdwribcyw2-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\hs0jcl0n1v-{0}-bqjiyaj88i-bqjiyaj88i.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\8uh92aor7g-{0}-c2jlpeoesf-c2jlpeoesf.gz
@@ -83,8 +82,6 @@ C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\sgkfrfmjlg-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\io8dif226u-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\vz9tnuedm2-{0}-mlv21k5csn-mlv21k5csn.gz
-C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\ixfvtxdibn-{0}-iecffz8zlu-iecffz8zlu.gz
-C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\f3hsnm6o9t-{0}-iecffz8zlu-iecffz8zlu.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\staticwebassets.development.json
@@ -2306,3 +2303,10 @@ C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\d05nl0rhrd-{0}-cj4ojh8vq2-cj4ojh8vq2.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\jgh5kw93xi-{0}-tpa8tcwxyn-tpa8tcwxyn.gz
 C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\qz2kr6gw5y-{0}-h5ik033hry-h5ik033hry.gz
+C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\bin\Debug\net10.0\docs\Data\cpu.json
+C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\bin\Debug\net10.0\docs\Data\gpu.json
+C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\6qk8fhm23k-{0}-w72qalikdx-w72qalikdx.gz
+C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\qxmshwih0i-{0}-nb4tfunkdq-nb4tfunkdq.gz
+C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\ixfvtxdibn-{0}-157sty6jak-157sty6jak.gz
+C:\Users\fahre\OneDrive - Universitas Negeri Jakarta (UNJ)\Documents\Perkuliahan\Personal Projects\pcp2p\obj\Debug\net10.0\compressed\f3hsnm6o9t-{0}-157sty6jak-157sty6jak.gz

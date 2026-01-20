@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pcp2p")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09345504ec8573e706ef414e163fb5c4e9f0c88f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95f439fb82c2c4a4eefe816ea48b972def7cf20b")]
 [assembly: System.Reflection.AssemblyProductAttribute("pcp2p")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pcp2p")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
