@@ -27,3 +27,9 @@ p2p = price to performance
 3. Make Brand input
 4. make hardware type input
 5. make hardware input including CPU and GPU
+
+## URGENT
+1. MIGRATE FROM MSSQL TO MYSQL
+2. CHECK DbContext
+3. CHECK TABLE/DATABASE INIT
+4. CHECK QUERIES

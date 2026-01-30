@@ -22,11 +22,41 @@ namespace pcp2p
             context.Database.EnsureCreated();
 
             // 1. Create Lookup Data
-            var intel = new Brand { Name = "Intel" }; // 01
-            var amd = new Brand {Name = "AMD"}; //02
-            var nvidia = new Brand { Name = "NVIDIA" }; // 03
-            var cpuType = new HardwareType { Name = "CPU" }; // 01
-            var gpuType = new HardwareType { Name = "GPU" }; // 02
+            var intel = new Brand 
+            { 
+                Name = "Intel",
+                NameCapitalized = "Intel",
+                NameLowercase = "intel",
+                NameUppercase = "INTEL" 
+            }; // 01
+            var amd = new Brand 
+            { 
+                Name = "AMD",
+                NameCapitalized = "Amd",
+                NameLowercase = "amd",
+                NameUppercase = "AMD",
+            }; //02
+            var nvidia = new Brand 
+            {
+                Name = "NVIDIA" ,
+                NameCapitalized = "Nvidia",
+                NameLowercase = "nvidia",
+                NameUppercase = "NVIDIA"
+            }; // 03
+            var cpuType = new HardwareType 
+            { 
+                Name = "CPU",
+                NameLowercase = "cpu",
+                NameUppercase = "CPU",
+                NameCapitalized = "Cpu"
+            }; // 01
+            var gpuType = new HardwareType
+            { 
+                Name = "GPU",
+                NameLowercase = "gpu",
+                NameUppercase = "GPU",
+                NameCapitalized = "Gpu"
+            }; // 02
 
             // 2. Create Hardware with specific sub-types
             var i9 = new Hardware
@@ -124,6 +154,5 @@ namespace pcp2p
                 }
             }
         }  
-        
     }
 }
