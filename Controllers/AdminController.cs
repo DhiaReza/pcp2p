@@ -14,7 +14,6 @@ namespace pcp2p.Controllers
         private readonly ILogger<AdminController> _logger;
         private readonly AppDbContext _context;
 
-        private bool Locked = false;
         public AdminController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<AdminController> logger, AppDbContext context)
         {
             _userManager = userManager;
@@ -38,11 +37,6 @@ namespace pcp2p.Controllers
 
             return View(adminDTO);
         }
-        public IActionResult AddHardware()
-        {
-            return View();
-        }
-
 
         public async Task<IActionResult> AddBrand(BrandDTO BrandInput)
         {
@@ -59,6 +53,53 @@ namespace pcp2p.Controllers
             await _context.SaveChangesAsync();
             _logger.LogInformation("Success");
 
+            return RedirectToAction("Index", "Admin");
+        }
+
+        public IActionResult AddHardware()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> AddHardware(HardwareCreateDTO dto)
+        {
+            if (!ModelState.IsValid) return View(dto);
+
+            // 1. Create the base Hardware entity
+            var hardware = new Hardware
+            {
+                Name = dto.Name,
+                Generation = dto.Generation,
+                MSRP = dto.MSRP,
+                ReleaseDate = dto.ReleaseDate,
+                BrandId = dto.BrandId,
+                HardwareTypeId = dto.HardwareTypeId
+            };
+
+            // 2. Attach the specific sub-type data
+            // Assuming 1 = CPU and 2 = GPU in your database
+            if (dto.HardwareTypeId == 1) 
+            {
+                hardware.Cpu = new Cpu {
+                    CoreCount = dto.CoreCount ?? 0,
+                    ThreadCount = dto.ThreadCount ?? 0,
+                    BaseClock = dto.CpuBaseClock ?? 0,
+                    // ... map other fields
+                };
+            }
+            else if (dto.HardwareTypeId == 2)
+            {
+                hardware.Gpu = new Gpu {
+                    Vram = dto.Vram ?? 0,
+                    BaseClock = dto.GpuBaseClock ?? 0,
+                    // ... map other fields
+                };
+            }
+
+            _context.Hardwares.Add(hardware);
+            await _context.SaveChangesAsync(); 
+            
             return RedirectToAction("Index", "Admin");
         }
     }
