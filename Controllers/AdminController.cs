@@ -1,6 +1,8 @@
+using System.Xml;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using pcp2p.Models;
 
@@ -56,45 +58,71 @@ namespace pcp2p.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        public IActionResult AddHardware()
+        public async Task<IActionResult> AddHardware()
         {
-            return View();
+        var viewModel = new AddHardwareViewDTO
+        {
+            HardwareData = new AddHardwareDTO(), // Empty form
+            BrandOptions = await _context.brands
+                .ToListAsync(),
+            TypeOptions = await _context.hardwareTypes
+                .ToListAsync()
+        };
+        return View(viewModel);
         }
         
         [HttpPost]
-        public async Task<IActionResult> AddHardware(HardwareCreateDTO dto)
+        public async Task<IActionResult> AddHardware(AddHardwareViewDTO dto)
         {
-            if (!ModelState.IsValid) return View(dto);
-
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new AddHardwareViewDTO
+                {
+                    HardwareData = new AddHardwareDTO(), // Empty form
+                    BrandOptions = await _context.brands
+                        .ToListAsync(),
+                    TypeOptions = await _context.hardwareTypes
+                        .ToListAsync()
+                };
+                return View(viewModel);
+            }
+            
             // 1. Create the base Hardware entity
             var hardware = new Hardware
             {
-                Name = dto.Name,
-                Generation = dto.Generation,
-                MSRP = dto.MSRP,
-                ReleaseDate = dto.ReleaseDate,
-                BrandId = dto.BrandId,
-                HardwareTypeId = dto.HardwareTypeId
+                Name = dto.HardwareData.Name,
+                Generation = dto.HardwareData.Generation,
+                MSRP = dto.HardwareData.MSRP,
+                ReleaseDate = dto.HardwareData.ReleaseDate,
+                BrandId = dto.HardwareData.BrandId,
+                HardwareTypeId = dto.HardwareData.HardwareTypeId
             };
 
             // 2. Attach the specific sub-type data
             // Assuming 1 = CPU and 2 = GPU in your database
-            if (dto.HardwareTypeId == 1) 
+            switch (dto.HardwareData.HardwareTypeId)
             {
-                hardware.Cpu = new Cpu {
-                    CoreCount = dto.CoreCount ?? 0,
-                    ThreadCount = dto.ThreadCount ?? 0,
-                    BaseClock = dto.CpuBaseClock ?? 0,
-                    // ... map other fields
-                };
-            }
-            else if (dto.HardwareTypeId == 2)
-            {
-                hardware.Gpu = new Gpu {
-                    Vram = dto.Vram ?? 0,
-                    BaseClock = dto.GpuBaseClock ?? 0,
-                    // ... map other fields
-                };
+                case 1:
+                    hardware.Cpu = new Cpu
+                    {
+                        CoreCount = dto.HardwareData.CoreCount ?? 0,
+                        ThreadCount = dto.HardwareData.ThreadCount ?? 0,
+                        BaseClock = dto.HardwareData.CpuBaseClock ?? 0,
+                        TDP = dto.HardwareData.TDP ?? 0
+                    };
+                    break;
+                case 2:
+                    hardware.Gpu = new Gpu
+                    {
+                        Vram = dto.HardwareData.Vram ?? 0,
+                        BaseClock = dto.HardwareData.GpuBaseClock ?? 0,
+                        BoostClock = dto.HardwareData.BoostClock ?? 0,
+                        GameClock = dto.HardwareData.GameClock ?? 0
+                    };
+                    break;
+                default:
+                    ModelState.AddModelError("HardwareTypeId", "The selected hardware type is not currently supported.");
+                    return View(dto);
             }
 
             _context.Hardwares.Add(hardware);
@@ -102,5 +130,6 @@ namespace pcp2p.Controllers
             
             return RedirectToAction("Index", "Admin");
         }
+        
     }
 }

@@ -3,10 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 using pcp2p.Models;
 
-namespace pcp2p
+namespace pcp2p.Models
 {
-public class HardwareCreateDTO
+public class AddHardwareDTO
 {
+    // This DTO is used for adding hardware
     // Base hardware fields
     
     [Required(ErrorMessage = "Please fill hardware name")]

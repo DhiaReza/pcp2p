@@ -1,0 +1,194 @@
+@{
+    ViewData["Title"] = "PCP2P Add Hardware";
+}
+@model pcp2p.Models.AddHardwareViewDTO
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~\pcp2p\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js"></script>
+</head>
+<body>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="mb-4 text-center">Add New Hardware</h1>
+            
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                    <strong>Error!</strong> @TempData["ErrorMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form asp-action="AddHardware" method="post">
+                <!-- Brand Selection -->
+                <div class="mb-3">
+                    <label for="BrandId" class="form-label">Select Brand</label>
+                    <select id="BrandId" name="HardwareData.BrandId" 
+                            class="form-select" required>
+                        <option value="">-- Select a brand --</option>
+                        @foreach (var brand in Model.BrandOptions)
+                        {
+                            <option value="@brand.Id">@brand.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- Hardware Type Selection -->
+                <div class="mb-3">
+                    <label for="HardwareTypeId" class="form-label">Select Hardware Type</label>
+                    <select id="HardwareTypeId" name="HardwareData.HardwareTypeId" 
+                            class="form-select" required>
+                        <option value="">-- Select hardware type --</option>
+                        @foreach (var type in Model.TypeOptions)
+                        {
+                            <option value="@type.Id">@type.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- Common Hardware Fields -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="Name" class="form-label">Hardware Name</label>
+                        <input type="text" id="Name" name="HardwareData.Name" 
+                               class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="Generation" class="form-label">Generation</label>
+                        <input type="text" id="Generation" name="HardwareData.Generation" 
+                               class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="MSRP" class="form-label">MSRP (USD)</label>
+                        <input type="number" id="MSRP" name="HardwareData.MSRP" 
+                               class="form-control" min="1" step="1" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="ReleaseDate" class="form-label">Release Date</label>
+                        <input type="date" id="ReleaseDate" name="HardwareData.ReleaseDate" 
+                               class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Conditionally Rendered Hardware Specifications -->
+                <div id="cpuSection" style="display: none;">
+                    <h4 class="mb-3">CPU Specifications</h4>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="CoreCount" class="form-label">Core Count</label>
+                            <input type="number" id="CoreCount" name="HardwareData.CoreCount" 
+                                   class="form-control" min="1" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="ThreadCount" class="form-label">Thread Count</label>
+                            <input type="number" id="ThreadCount" name="HardwareData.ThreadCount" 
+                                   class="form-control" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="CpuBaseClock" class="form-label">Base Clock (MHz)</label>
+                            <input type="number" id="CpuBaseClock" name="HardwareData.CpuBaseClock" 
+                                   class="form-control" min="100" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="TDP" class="form-label">TDP (Watts)</label>
+                            <input type="number" id="TDP" name="HardwareData.TDP" 
+                                   class="form-control" min="1" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gpuSection" style="display: none;">
+                    <h4 class="mb-3">GPU Specifications</h4>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="Vram" class="form-label">VRAM (MB)</label>
+                            <input type="number" id="Vram" name="HardwareData.Vram" 
+                                   class="form-control" min="1" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="GpuBaseClock" class="form-label">Base Clock (MHz)</label>
+                            <input type="number" id="GpuBaseClock" name="HardwareData.GpuBaseClock" 
+                                   class="form-control" min="100" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="BoostClock" class="form-label">Boost Clock (MHz)</label>
+                            <input type="number" id="BoostClock" name="HardwareData.BoostClock" 
+                                   class="form-control" min="100" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="GameClock" class="form-label">Game Clock (MHz)</label>
+                            <input type="number" id="GameClock" name="HardwareData.GameClock" 
+                                   class="form-control" min="100"required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="TDP" class="form-label">TDP (Watts)</label>
+                            <input type="number" id="TDP" name="HardwareData.TDP" 
+                                   class="form-control" min="1" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">Add Hardware</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+@section Scripts {
+    <script>
+    const hardwareTypeSelect = document.getElementById('HardwareTypeId');
+    const cpuSection = document.getElementById('cpuSection');
+    const gpuSection = document.getElementById('gpuSection');
+
+    // Show appropriate section based on selected type
+    hardwareTypeSelect.addEventListener('change', function () {
+        const selectedType = this.value;
+        
+        // Hide both sections first
+        cpuSection.style.display = 'none';
+        gpuSection.style.display = 'none';
+            
+            // Remove required from all inputs inside these specific sections
+            [cpuSection, gpuSection].forEach(section => {
+                section.querySelectorAll('input').forEach(input => {
+                    input.required = false;
+                });
+            });
+
+            // 2. Add 'required' back ONLY to the chosen type
+            if (selectedType === '1') { // CPU
+                cpuSection.style.display = 'block';
+                cpuSection.querySelectorAll('input').forEach(input => input.required = true);
+            } 
+            else if (selectedType === '2') { // GPU
+                gpuSection.style.display = 'block';
+                gpuSection.querySelectorAll('input').forEach(input => input.required = true);
+            }
+        });
+    </script>
+}
