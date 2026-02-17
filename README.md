@@ -22,8 +22,4 @@ p2p = avg FPS / MSRP
 p2p = price to performance
 
 ### Todo
-1. Make admin dashboard
-2. Make view for list of hardware, brand, etc
-3. Make Brand input
-4. make hardware type input
-5. make hardware input including CPU and GPU
+1. Compile GPU hardware from Nvidia, AMD, and Intel dating back from 2015 (GTX 1000)

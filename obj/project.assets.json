@@ -2794,11 +2794,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
+      "projectUniqueName": "/mnt/PNY CS900/pcp2p/pcp2p.csproj",
       "projectName": "pcp2p",
-      "projectPath": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
+      "projectPath": "/mnt/PNY CS900/pcp2p/pcp2p.csproj",
       "packagesPath": "/home/fahreza/.nuget/packages/",
-      "outputPath": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/",
+      "outputPath": "/mnt/PNY CS900/pcp2p/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/fahreza/.nuget/NuGet/NuGet.Config"
@@ -2819,11 +2819,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2868,7 +2863,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.417/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.124/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
