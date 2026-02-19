@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/PNY CS900/pcp2p/pcp2p.csproj": {}
+    "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj": {}
   },
   "projects": {
-    "/mnt/PNY CS900/pcp2p/pcp2p.csproj": {
+    "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/PNY CS900/pcp2p/pcp2p.csproj",
+        "projectUniqueName": "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj",
         "projectName": "pcp2p",
-        "projectPath": "/mnt/PNY CS900/pcp2p/pcp2p.csproj",
+        "projectPath": "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj",
         "packagesPath": "/home/fahreza/.nuget/packages/",
-        "outputPath": "/mnt/PNY CS900/pcp2p/obj/",
+        "outputPath": "/media/fahreza/PNY CS900/pcp2p/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/fahreza/.nuget/NuGet/NuGet.Config"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -52,9 +57,9 @@
               "target": "Package",
               "version": "[8.0.23, )"
             },
-            "MySql.EntityFrameworkCore": {
+            "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[8.0.22, )"
+              "version": "[8.0.3, )"
             }
           },
           "imports": [
@@ -76,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.124/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

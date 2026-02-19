@@ -9,59 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = pcp2p
 build_property.RootNamespace = pcp2p
-build_property.ProjectDir = /mnt/PNY CS900/pcp2p/
+build_property.ProjectDir = /media/fahreza/PNY CS900/pcp2p/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /mnt/PNY CS900/pcp2p
+build_property.MSBuildProjectDirectory = /media/fahreza/PNY CS900/pcp2p
 build_property._RazorSourceGeneratorDebug = 
 
-[/mnt/PNY CS900/pcp2p/Views/Account/Login.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Admin/AddHardware.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Admin/AddHardware.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRkSGFyZHdhcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Admin/Index.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Home/Compare.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Home/Compare.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Db21wYXJlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Home/Cpu.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Home/Cpu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcHUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Home/Gpu.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Home/Gpu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HcHUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Home/Index.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Shared/Error.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/_ViewImports.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/_ViewStart.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/mnt/PNY CS900/pcp2p/Views/Shared/_Layout.cshtml]
+[/media/fahreza/PNY CS900/pcp2p/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-wbv6yh0xet
