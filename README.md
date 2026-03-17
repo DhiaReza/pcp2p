@@ -23,3 +23,6 @@ p2p = price to performance
 
 ### Todo
 1. Compile GPU hardware from Nvidia, AMD, and Intel dating back from 2015 (GTX 1000)
+Sources : 
+https://www.videocardbenchmark.net/high_end_gpus.html
+https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html

@@ -1,0 +1,1511 @@
+[
+    {
+        "Name": "EXAMPLE NAME GeForce RTX 4090",
+        "Generation": "GENERATION NAME Ada Lovelace",
+        "MSRP": 1599.0,
+        "ReleaseDate": "dd-mm-yy",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 24,
+            "BaseClock": 2230,
+            "BoostClock": 2520,
+            "GameClock": 2520,
+            "TDP": 450
+        }
+    },
+    {
+        "Name": "GeForce RTX 5090",
+        "Generation": "GeForce 50",
+        "Architecture": "Blackwell 2.0",
+        "MSRP": 1999.0,
+        "ReleaseDate": "30-01-2025",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 32,
+            "BaseClock": 2017,
+            "BoostClock": 2407,
+            "TDP": 575
+        }
+    },
+    {
+        "Name": "GeForce RTX 4090",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 1599.0,
+        "ReleaseDate": "20-09-2022",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 24,
+            "BaseClock": 2235,
+            "BoostClock": 2520,
+            "TDP": 450
+        }
+    },
+    {
+        "Name": "Radeon RX 7900 XT",
+        "Generation": "NAVI III",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 899.0,
+        "ReleaseDate": "3-11-2022",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 20,
+            "BaseClock": 1387,
+            "BoostClock": 2394,
+            "GameClock": 2025,
+            "TDP": 450
+        }
+    },
+    {
+        "Name": "GeForce RTX 5080",
+        "Generation": "GeForce 50",
+        "Architecture": "Blackwell 2.0",
+        "MSRP": 999.0,
+        "ReleaseDate": "30-01-2025",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 2295,
+            "BoostClock": 2617,
+            "TDP": 360
+        }
+    },
+    {
+        "Name": "GeForce RTX 4080 SUPER",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 999.0,
+        "ReleaseDate": "31-01-2024",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 2295,
+            "BoostClock": 2550,
+            "TDP": 320
+        }
+    },
+    {
+        "Name": "GeForce RTX 4080",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 1199.0,
+        "ReleaseDate": "20-09-2022",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 2205,
+            "BoostClock": 2505,
+            "TDP": 320
+        }
+    },
+    {
+        "Name": "Radeon RX 6950 XT",
+        "Generation": "NAVI II",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 1099.0,
+        "ReleaseDate": "10-05-2022",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1860,
+            "BoostClock": 2310,
+            "GameClock": 2100,
+            "TDP": 335
+        }
+    },
+    {
+        "Name": "Radeon RX 7900 XTX",
+        "Generation": "NAVI III",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 999.0,
+        "ReleaseDate": "03-11-2022",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 24,
+            "BaseClock": 1929,
+            "BoostClock": 2498,
+            "GameClock": 2365,
+            "TDP": 355
+        }
+    },
+    {
+        "Name": "GeForce RTX 3090 Ti",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 1999.0,
+        "ReleaseDate": "27-01-2022",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 24,
+            "BaseClock": 1560,
+            "BoostClock": 1860,
+            "TDP": 450
+        }
+    },
+    {
+        "Name": "GeForce RTX 5070 Ti",
+        "Generation": "GeForce 50",
+        "Architecture": "Blackwell 2.0",
+        "MSRP": 749.0,
+        "ReleaseDate": "20-02-2022",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 2295,
+            "BoostClock": 2452,
+            "TDP": 300
+        }
+    },
+    {
+        "Name": "GeForce RTX 3090",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 1499.0,
+        "ReleaseDate": "01-09-2020",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 24,
+            "BaseClock": 1395,
+            "BoostClock": 1695,
+            "TDP": 350
+        }
+    },
+    {
+        "Name": "Radeon RX 6900 XT",
+        "Generation": "NAVI II",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 999.0,
+        "ReleaseDate": "28-10-2020",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1825,
+            "GameClock": 2015,
+            "BoostClock": 2250,
+            "TDP": 300
+        }
+    },
+    {
+        "Name": "GeForce RTX 3080 Ti",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 1199.0,
+        "ReleaseDate": "31-05-2021",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 1365,
+            "BoostClock": 1665,
+            "TDP": 350
+        }
+    },
+    {
+        "Name": "Radeon RX 9070 XT",
+        "Generation": "NAVI III",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 599.0,
+        "ReleaseDate": "06-03-2025",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1660,
+            "GameClock": 2400,
+            "BoostClock": 2970,
+            "TDP": 304
+        }
+    },
+    {
+        "Name": "Radeon RX 6800 XT",
+        "Generation": "NAVI II",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 649.0,
+        "ReleaseDate": "28-10-2020",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1825,
+            "GameClock": 2015,
+            "BoostClock": 2250,
+            "TDP": 300
+        }
+    },
+    {
+        "Name": "GeForce RTX 3080 12GB",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 799.0,
+        "ReleaseDate": "11-01-2022",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 1260,
+            "BoostClock": 1710,
+            "TDP": 350
+        }
+    },
+    {
+        "Name": "GeForce RTX 4070 Ti SUPER",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 799.0,
+        "ReleaseDate": "08-01-2024",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 2340,
+            "BoostClock": 2610,
+            "TDP": 285
+        }
+    },
+    {
+        "Name": "GeForce RTX 3080",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 699.0,
+        "ReleaseDate": "01-09-2020",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 10,
+            "BaseClock": 1440,
+            "BoostClock": 1710,
+            "TDP": 320
+        }
+    },
+    {
+        "Name": "GeForce RTX 4070 Ti",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 799.0,
+        "ReleaseDate": "03-01-2023",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 2310,
+            "BoostClock": 2610,
+            "TDP": 285
+        }
+    },
+    {
+        "Name": "Radeon RX 6800",
+        "Generation": "NAVI II",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 579.0,
+        "ReleaseDate": "28-10-2020",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1700,
+            "GameClock": 1815,
+            "BoostClock": 2105,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "Radeon RX 9070",
+        "Generation": "NAVI IV",
+        "Architecture": "RDNA 4.0",
+        "MSRP": 549.0,
+        "ReleaseDate": "06-03-2025",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1330,
+            "GameClock": 2070,
+            "BoostClock": 2520,
+            "TDP": 220
+        }
+    },
+    {
+        "Name": "GeForce RTX 5070",
+        "Generation": "GeForce 50",
+        "Architecture": "Blackwell 2.0",
+        "MSRP": 549.0,
+        "ReleaseDate": "04-03-2025",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 2325,
+            "BoostClock": 2512,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "GeForce RTX 4070 SUPER",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 599.0,
+        "ReleaseDate": "04-01-2024",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 1980,
+            "BoostClock": 2475,
+            "TDP": 220
+        }
+    },
+    {
+        "Name": "GeForce RTX 3070 Ti",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 599.0,
+        "ReleaseDate": "31-05-2021",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1575,
+            "BoostClock": 1770,
+            "TDP": 290
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 5070",
+        "Generation": "GeForce 50",
+        "Architecture": "Blackwell 2.0",
+        "MSRP": 549.0,
+        "ReleaseDate": "04-03-2025",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 2325,
+            "BoostClock": 2512,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6750 XT",
+        "Generation": "Navi II (RX 6000)",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 549.0,
+        "ReleaseDate": "03-03-2022",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 2150,
+            "GameClock": 2495,
+            "BoostClock": 2600,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 7900 GRE",
+        "Generation": "Navi III (RX 7000)",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 549.0,
+        "ReleaseDate": "27-07-2023",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1287,
+            "GameClock": 1880,
+            "BoostClock": 2245,
+            "TDP": 260
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6700 XT",
+        "Generation": "Navi II (RX 6000)",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 479.0,
+        "ReleaseDate": "03-03-2021",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 2321,
+            "GameClock": 2424,
+            "BoostClock": 2581,
+            "TDP": 230
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 3070",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 499.0,
+        "ReleaseDate": "01-09-2020",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1500,
+            "BoostClock": 1725,
+            "TDP": 220
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 2080 Ti",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 999.0,
+        "ReleaseDate": "20-09-2018",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 11,
+            "BaseClock": 1350,
+            "BoostClock": 1545,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 4070",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 599.0,
+        "ReleaseDate": "12-04-2023",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 1920,
+            "BoostClock": 2475,
+            "TDP": 200
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 7800 XT",
+        "Generation": "Navi III (RX 7000)",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 499.0,
+        "ReleaseDate": "25-08-2023",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1295,
+            "GameClock": 2124,
+            "BoostClock": 2430,
+            "TDP": 263
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 3060 Ti",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 399.0,
+        "ReleaseDate": "01-12-2020",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1410,
+            "BoostClock": 1665,
+            "TDP": 200
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 2080",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 699.0,
+        "ReleaseDate": "20-09-2018",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1515,
+            "BoostClock": 1710,
+            "TDP": 215
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 7700 XT",
+        "Generation": "Navi III (RX 7000)",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 449.0,
+        "ReleaseDate": "25-08-2023",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 1435,
+            "GameClock": 2171,
+            "BoostClock": 2544,
+            "TDP": 245
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6650 XT",
+        "Generation": "Navi II (RX 6000)",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 399.0,
+        "ReleaseDate": "10-05-2022",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 2055,
+            "GameClock": 2410,
+            "BoostClock": 2635,
+            "TDP": 176
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 2070 SUPER",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 499.0,
+        "ReleaseDate": "09-07-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1605,
+            "BoostClock": 1770,
+            "TDP": 215
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6600 XT",
+        "Generation": "Navi II (RX 6000)",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 379.0,
+        "ReleaseDate": "30-07-2021",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1968,
+            "GameClock": 2359,
+            "BoostClock": 2589,
+            "TDP": 160
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 5700 XT",
+        "Generation": "Navi (RX 5000)",
+        "Architecture": "RDNA 1.0",
+        "MSRP": 399.0,
+        "ReleaseDate": "07-07-2019",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1605,
+            "GameClock": 1755,
+            "BoostClock": 1905,
+            "TDP": 225
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 5060",
+        "Generation": "GeForce 50",
+        "Architecture": "Blackwell 2.0",
+        "MSRP": 299.0,
+        "ReleaseDate": "19-05-2025",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 2280,
+            "BoostClock": 2497,
+            "TDP": 145
+        }
+    },
+    {
+        "Name": "AMD Radeon VII",
+        "Generation": "Vega II (Radeon VII)",
+        "Architecture": "GCN 5.1",
+        "MSRP": 699.0,
+        "ReleaseDate": "07-02-2019",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1400,
+            "BoostClock": 1750,
+            "TDP": 295
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1080 Ti",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 699.0,
+        "ReleaseDate": "10-03-2017",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 11,
+            "BaseClock": 1481,
+            "BoostClock": 1582,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 2060 SUPER",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 399.0,
+        "ReleaseDate": "09-07-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1470,
+            "BoostClock": 1650,
+            "TDP": 175
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 5700",
+        "Generation": "Navi (RX 5000)",
+        "Architecture": "RDNA 1.0",
+        "MSRP": 349.0,
+        "ReleaseDate": "07-07-2019",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1465,
+            "GameClock": 1625,
+            "BoostClock": 1725,
+            "TDP": 180
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 4060",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 299.0,
+        "ReleaseDate": "18-05-2023",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1830,
+            "BoostClock": 2460,
+            "TDP": 115
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 7600 XT",
+        "Generation": "Navi III (RX 7000)",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 329.0,
+        "ReleaseDate": "08-01-2024",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1980,
+            "GameClock": 2470,
+            "BoostClock": 2755,
+            "TDP": 190
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 5600 XT",
+        "Generation": "Navi (RX 5000)",
+        "Architecture": "RDNA 1.0",
+        "MSRP": 279.0,
+        "ReleaseDate": "21-01-2020",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 1130,
+            "GameClock": 1375,
+            "BoostClock": 1560,
+            "TDP": 150
+        }
+    },
+    {
+        "Name": "AMD Radeon RX Vega 64",
+        "Generation": "Vega (RX Vega)",
+        "Architecture": "GCN 5.0",
+        "MSRP": 499.0,
+        "ReleaseDate": "07-08-2017",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1247,
+            "BoostClock": 1546,
+            "TDP": 295
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1080",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 599.0,
+        "ReleaseDate": "27-05-2016",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1607,
+            "BoostClock": 1733,
+            "TDP": 180
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 3050 8GB",
+        "Generation": "GeForce 30",
+        "Architecture": "Ampere",
+        "MSRP": 249.0,
+        "ReleaseDate": "04-01-2022",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1552,
+            "BoostClock": 1777,
+            "TDP": 130
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1070 Ti",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 399.0,
+        "ReleaseDate": "02-11-2017",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1607,
+            "BoostClock": 1683,
+            "TDP": 180
+        }
+    },
+    {
+        "Name": "AMD Radeon RX Vega 56",
+        "Generation": "Vega (RX Vega)",
+        "Architecture": "GCN 5.0",
+        "MSRP": 399.0,
+        "ReleaseDate": "14-08-2017",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1156,
+            "BoostClock": 1471,
+            "TDP": 210
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1660 SUPER",
+        "Generation": "GeForce 16",
+        "Architecture": "Turing",
+        "MSRP": 229.0,
+        "ReleaseDate": "29-10-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 1530,
+            "BoostClock": 1785,
+            "TDP": 125
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1660 Ti",
+        "Generation": "GeForce 16",
+        "Architecture": "Turing",
+        "MSRP": 279.0,
+        "ReleaseDate": "22-02-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 1500,
+            "BoostClock": 1770,
+            "TDP": 120
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 7600",
+        "Generation": "Navi III (RX 7000)",
+        "Architecture": "RDNA 3.0",
+        "MSRP": 269.0,
+        "ReleaseDate": "24-05-2023",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1720,
+            "GameClock": 2250,
+            "BoostClock": 2655,
+            "TDP": 165
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1660",
+        "Generation": "GeForce 16",
+        "Architecture": "Turing",
+        "MSRP": 219.0,
+        "ReleaseDate": "14-03-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 1530,
+            "BoostClock": 1785,
+            "TDP": 120
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 590",
+        "Generation": "Polaris (RX 500)",
+        "Architecture": "GCN 4.0",
+        "MSRP": 279.0,
+        "ReleaseDate": "15-11-2018",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1469,
+            "BoostClock": 1545,
+            "TDP": 175
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6600",
+        "Generation": "Navi II (RX 6000)",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 329.0,
+        "ReleaseDate": "13-10-2021",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1626,
+            "GameClock": 2044,
+            "BoostClock": 2491,
+            "TDP": 132
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1650 SUPER",
+        "Generation": "GeForce 16",
+        "Architecture": "Turing",
+        "MSRP": 159.0,
+        "ReleaseDate": "22-11-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1530,
+            "BoostClock": 1725,
+            "TDP": 100
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6500 XT",
+        "Generation": "Navi II (RX 6000)",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 199.0,
+        "ReleaseDate": "19-01-2022",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 2310,
+            "GameClock": 2610,
+            "BoostClock": 2815,
+            "TDP": 107
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 980",
+        "Generation": "GeForce 900",
+        "Architecture": "Maxwell 2.0",
+        "MSRP": 549.0,
+        "ReleaseDate": "19-09-2014",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1127,
+            "BoostClock": 1216,
+            "TDP": 165
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1650",
+        "Generation": "GeForce 16",
+        "Architecture": "Turing",
+        "MSRP": 149.0,
+        "ReleaseDate": "23-04-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1485,
+            "BoostClock": 1665,
+            "TDP": 75
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 970",
+        "Generation": "GeForce 900",
+        "Architecture": "Maxwell 2.0",
+        "MSRP": 329.0,
+        "ReleaseDate": "19-09-2014",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1050,
+            "BoostClock": 1178,
+            "TDP": 148
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6400",
+        "Generation": "Navi II (RX 6000)",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 159.0,
+        "ReleaseDate": "19-01-2022",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1923,
+            "GameClock": 2039,
+            "BoostClock": 2321,
+            "TDP": 53
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1050 Ti",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 139.0,
+        "ReleaseDate": "25-10-2016",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1291,
+            "BoostClock": 1392,
+            "TDP": 75
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1050",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 109.0,
+        "ReleaseDate": "25-10-2016",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 2,
+            "BaseClock": 1354,
+            "BoostClock": 1455,
+            "TDP": 75
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GT 1030",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 79.0,
+        "ReleaseDate": "17-05-2017",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 2,
+            "BaseClock": 1228,
+            "BoostClock": 1468,
+            "TDP": 30
+        }
+    },
+    {
+        "Name": "NVIDIA TITAN RTX",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 2499.0,
+        "ReleaseDate": "18-12-2018",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 24,
+            "BaseClock": 1350,
+            "BoostClock": 1770,
+            "TDP": 280
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 5060 Ti 16GB",
+        "Generation": "GeForce 50",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 429.0,
+        "ReleaseDate": "16-04-2025",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 2407,
+            "BoostClock": 2572,
+            "TDP": 180
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 6700",
+        "Generation": "NAVI II",
+        "Architecture": "RDNA 2.0",
+        "MSRP": 0,
+        "ReleaseDate": "09-06-2021",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 10,
+            "BaseClock": 1941,
+            "GameClock":2174,
+            "BoostClock": 2450,
+            "TDP": 175
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 2080 SUPER",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 699.0,
+        "ReleaseDate": "23-07-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1650,
+            "BoostClock": 1815,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 9060 XT 16GB",
+        "Generation": "NAVI IV",
+        "Architecture": "RDNA 4.0",
+        "MSRP": 349,
+        "ReleaseDate": "04-06-2025",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 1700,
+            "GameClock":2530,
+            "BoostClock": 3130,
+            "TDP": 160
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 5060 Ti 8GB",
+        "Generation": "GeForce 50",
+        "Architecture": "Blackwell 2.0",
+        "MSRP": 379.0,
+        "ReleaseDate": "16-04-2025",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 2407,
+            "BoostClock": 2572,
+            "TDP": 180
+        }
+    },
+    {
+        "Name": "Intel Arc A770 16GB",
+        "Generation": "Alchemist",
+        "Architecture": "Xe-HPG",
+        "MSRP": 329.0,
+        "ReleaseDate": "12-10-2022",
+        "Brand": "intel",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 16,
+            "BaseClock": 2100,
+            "BoostClock": 2400,
+            "TDP": 225
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 4060 Ti 8GB",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 399.0,
+        "ReleaseDate": "18-05-2023",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 2310,
+            "BoostClock": 2535,
+            "TDP": 160
+        }
+    },
+        {
+        "Name": "NVIDIA GeForce RTX 4060 Ti 16GB",
+        "Generation": "GeForce 40",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 499.0,
+        "ReleaseDate": "18-05-2023",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 2310,
+            "BoostClock": 2535,
+            "TDP": 165
+        }
+    },
+    {
+        "Name": "Intel Arc B580",
+        "Generation": "Battlemage",
+        "Architecture": "Xe2-HPG",
+        "MSRP": 249.0,
+        "ReleaseDate": "13-12-2024",
+        "Brand": "intel",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 2670,
+            "BoostClock": 2670,
+            "TDP": 190
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce RTX 2060",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 349.0,
+        "ReleaseDate": "07-01-2019",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 1365,
+            "BoostClock": 1680,
+            "TDP": 160
+        }
+    },
+        {
+        "Name": "NVIDIA GeForce RTX 3060 12GB",
+        "Generation": "GeForce 30",
+        "Architecture": "Ada Lovelace",
+        "MSRP": 329.0,
+        "ReleaseDate": "12-01-2021",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 12,
+            "BaseClock": 1320,
+            "BoostClock": 1777,
+            "TDP": 170
+        }
+    },
+    {
+        "Name": "Intel Arc B570",
+        "Generation": "Battlemage",
+        "Architecture": "Xe2-HPG",
+        "MSRP": 219.0,
+        "ReleaseDate": "16-01-2025",
+        "Brand": "intel",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 10,
+            "BaseClock": 2500,
+            "BoostClock": 2500,
+            "TDP": 150
+        }
+    },
+    {
+        "Name": "Intel Arc A770 8GB",
+        "Generation": "Alchemist",
+        "Architecture": "Xe-HPG",
+        "MSRP": 329.0,
+        "ReleaseDate": "12-10-2022",
+        "Brand": "intel",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 2100,
+            "BoostClock": 2100,
+            "TDP": 225
+        }
+    },
+    {
+        "Name": "Intel Arc A750",
+        "Generation": "Alchemist",
+        "Architecture": "Xe-HPG",
+        "MSRP": 289.0,
+        "ReleaseDate": "12-10-2022",
+        "Brand": "intel",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 2050,
+            "BoostClock": 2400,
+            "TDP": 225
+        }
+    },
+        {
+        "Name": "NVIDIA GeForce GTX 1070",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 379.0,
+        "ReleaseDate": "10-06-2016",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1506,
+            "BoostClock": 1683,
+            "TDP": 150
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 5500 XT 4GB",
+        "Generation": "NAVI I",
+        "Architecture": "RDNA 1.0",
+        "MSRP": 169,
+        "ReleaseDate": "12-12-2019",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1607,
+            "GameClock":1717,
+            "BoostClock": 1845,
+            "TDP": 130
+        }
+    },
+    {
+        "Name": "Intel Arc A580",
+        "Generation": "Alchemist",
+        "Architecture": "Xe-HPG",
+        "MSRP": 179.0,
+        "ReleaseDate": "10-10-2023",
+        "Brand": "intel",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1700,
+            "BoostClock": 2000,
+            "TDP": 175
+        }
+    },
+        {
+        "Name": "NVIDIA GeForce GTX 980 Ti",
+        "Generation": "GeForce 900",
+        "Architecture": "Maxwell 2.0",
+        "MSRP": 649.0,
+        "ReleaseDate": "02-06-2015",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 1000,
+            "BoostClock": 1076,
+            "TDP": 250
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 580",
+        "Generation": "Polaris (RX 500)",
+        "Architecture": "GCN 4.0",
+        "MSRP": 229,
+        "ReleaseDate": "18-04-2017",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1257,
+            "BoostClock": 1340,
+            "TDP": 185
+        }
+    },
+    {
+        "Name": "AMD Radeon R9 FURY X",
+        "Generation": "Pirate Islands",
+        "Architecture": "GCN 3.0",
+        "MSRP": 649,
+        "ReleaseDate": "24-04-2015",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1050,
+            "TDP": 275
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 5500 XT 8GB",
+        "Generation": "NAVI I",
+        "Architecture": "RDNA 1.0",
+        "MSRP": 200,
+        "ReleaseDate": "12-12-2019",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1670,
+            "BoostClock": 1845,
+            "TDP": 150
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1060 6 GB",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 299.0,
+        "ReleaseDate": "19-06-2016",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 1506,
+            "BoostClock": 1709,
+            "TDP": 120
+        }
+    },
+    {
+        "Name": "AMD Radeon R9 390",
+        "Generation": "Pirate Islands",
+        "Architecture": "GCN 2.0",
+        "MSRP": 329,
+        "ReleaseDate": "18-06-2015",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1000,
+            "TDP": 275
+        }
+    },
+        {
+        "Name": "NVIDIA GeForce GTX 1650 GDDR6",
+        "Generation": "GeForce 16",
+        "Architecture": "Turing",
+        "MSRP": 149.0,
+        "ReleaseDate": "01-04-2020",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1410,
+            "BoostClock": 1590,
+            "TDP": 75
+        }
+    },
+    {
+        "Name": "Intel Arc A380",
+        "Generation": "Alchemist",
+        "Architecture": "Xe-HPG",
+        "MSRP": 149.0,
+        "ReleaseDate": "14-06-2022",
+        "Brand": "intel",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 6,
+            "BaseClock": 2000,
+            "BoostClock": 2050,
+            "TDP": 75
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 570",
+        "Generation": "Arctic Islands",
+        "Architecture": "GCN 4.0",
+        "MSRP": 169,
+        "ReleaseDate": "18-04-2017",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1168,
+            "BoostClock": 1244,
+            "TDP": 150
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1630",
+        "Generation": "GeForce 16",
+        "Architecture": "Turing",
+        "MSRP": 199.0,
+        "ReleaseDate": "28-06-2022",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1740,
+            "BoostClock": 1785,
+            "TDP": 75
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 560",
+        "Generation": "Polaris (RX 500)",
+        "Architecture": "GCN 4.0",
+        "MSRP": 99,
+        "ReleaseDate": "18-04-2017",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 4,
+            "BaseClock": 1175,
+            "BoostClock": 1275,
+            "TDP": 75
+        }
+    },
+    {
+        "Name": "NVIDIA GeForce GTX 1060 3GB",
+        "Generation": "GeForce 10",
+        "Architecture": "Pascal",
+        "MSRP": 199.0,
+        "ReleaseDate": "18-06-2016",
+        "Brand": "nvidia",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 3,
+            "BaseClock": 1506,
+            "BoostClock": 1708,
+            "TDP": 120
+        }
+    },
+    {
+        "Name": "AMD Radeon RX 550",
+        "Generation": "Polaris (RX 500)",
+        "Architecture": "GCN 4.0",
+        "MSRP": 79.0,
+        "ReleaseDate": "20-04-2017",
+        "Brand": "amd",
+        "HardwareType": "gpuType",
+        "Gpu": {
+            "Vram": 2,
+            "BaseClock": 1100,
+            "BoostClock": 1183,
+            "TDP": 120
+        }
+    }
+]

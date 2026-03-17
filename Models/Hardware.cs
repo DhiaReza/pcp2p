@@ -11,9 +11,12 @@ namespace pcp2p.Models
         [Required]
         public string Name  {get; set;}
         public string Generation {get;set;}
+        public string Architecture {get;set;}
         [Column(TypeName = "decimal(18,2)")]
         public decimal MSRP { get; set; }
-        public DateTime ReleaseDate {get;set;}
+
+        [JsonConverter(typeof(DateFormatConverter), "dd-MM-yyyy")]
+        public DateOnly ReleaseDate {get;set;}
 
         public Cpu Cpu {get;set;}
         public Gpu Gpu {get;set;}

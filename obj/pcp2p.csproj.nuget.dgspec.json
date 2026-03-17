@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj": {}
+    "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj": {}
   },
   "projects": {
-    "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj": {
+    "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj",
+        "projectUniqueName": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
         "projectName": "pcp2p",
-        "projectPath": "/media/fahreza/PNY CS900/pcp2p/pcp2p.csproj",
+        "projectPath": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
         "packagesPath": "/home/fahreza/.nuget/packages/",
-        "outputPath": "/media/fahreza/PNY CS900/pcp2p/obj/",
+        "outputPath": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/fahreza/.nuget/NuGet/NuGet.Config"
@@ -37,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -57,9 +58,9 @@
               "target": "Package",
               "version": "[8.0.23, )"
             },
-            "Pomelo.EntityFrameworkCore.MySql": {
+            "MySql.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[8.0.22, )"
             }
           },
           "imports": [
@@ -81,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

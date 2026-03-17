@@ -4,16 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using pcp2p;
 using Microsoft.AspNetCore.Identity;
-using Pomelo.EntityFrameworkCore.MySql;
+using MySql.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-string DBConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(DBConnectionString, ServerVersion.AutoDetect(DBConnectionString)));
+    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAntiforgery(options => options.HeaderName = "XSRF-TOKEN");
 
