@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 
 namespace pcp2p.Models
@@ -10,13 +12,13 @@ namespace pcp2p.Models
         public int Id {get; set;}
         [Required]
         public string Name  {get; set;}
-        public string Generation {get;set;}
-        public string Architecture {get;set;}
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal MSRP { get; set; }
 
-        [JsonConverter(typeof(DateFormatConverter), "dd-MM-yyyy")]
+        [JsonConverter(typeof(IsoDateTimeConverter), "dd-MM-yyyy")]
         public DateOnly ReleaseDate {get;set;}
+        public int TDP {get;set;}
 
         public Cpu Cpu {get;set;}
         public Gpu Gpu {get;set;}

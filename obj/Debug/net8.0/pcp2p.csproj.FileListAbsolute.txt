@@ -1,7 +1,5 @@
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/appsettings.Development.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/appsettings.json
-/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/docs/Data/cpu.json
-/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/docs/Data/gpu.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/dotnet-tools.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/pcp2p.staticwebassets.runtime.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/pcp2p
@@ -265,9 +263,6 @@
 /mnt/PNY CS900/pcp2p/obj/Debug/net8.0/pcp2p.pdb
 /mnt/PNY CS900/pcp2p/obj/Debug/net8.0/pcp2p.genruntimeconfig.cache
 /mnt/PNY CS900/pcp2p/obj/Debug/net8.0/ref/pcp2p.dll
-/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/docs/Data/GPU/AMD.json
-/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/docs/Data/GPU/Nvidia.json
-/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/docs/Data/GPU/template.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/pcp2p.staticwebassets.endpoints.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/Debug/net8.0/rpswa.dswa.cache.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/Debug/net8.0/rjimswa.dswa.cache.json
@@ -276,3 +271,6 @@
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/Debug/net8.0/staticwebassets.build.json.cache
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/Debug/net8.0/staticwebassets.build.endpoints.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/Debug/net8.0/swae.build.ex.cache
+/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/Debug/net8.0/pcp2p.sourcelink.json
+/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/docs/Data/gpu_data.json
+/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/Newtonsoft.Json.dll

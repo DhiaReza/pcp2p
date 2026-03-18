@@ -71,65 +71,65 @@ namespace pcp2p.Controllers
         return View(viewModel);
         }
         
-        [HttpPost]
-        public async Task<IActionResult> AddHardware(AddHardwareViewDTO dto)
-        {
-            if (!ModelState.IsValid)
-            {
-                var viewModel = new AddHardwareViewDTO
-                {
-                    HardwareData = new AddHardwareDTO(), // Empty form
-                    BrandOptions = await _context.brands
-                        .ToListAsync(),
-                    TypeOptions = await _context.hardwareTypes
-                        .ToListAsync()
-                };
-                return View(viewModel);
-            }
+        // [HttpPost]
+        // public async Task<IActionResult> AddHardware(AddHardwareViewDTO dto)
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         var viewModel = new AddHardwareViewDTO
+        //         {
+        //             HardwareData = new AddHardwareDTO(), // Empty form
+        //             BrandOptions = await _context.brands
+        //                 .ToListAsync(),
+        //             TypeOptions = await _context.hardwareTypes
+        //                 .ToListAsync()
+        //         };
+        //         return View(viewModel);
+        //     }
             
-            // 1. Create the base Hardware entity
-            var hardware = new Hardware
-            {
-                Name = dto.HardwareData.Name,
-                Generation = dto.HardwareData.Generation,
-                MSRP = dto.HardwareData.MSRP,
-                ReleaseDate = dto.HardwareData.ReleaseDate,
-                BrandId = dto.HardwareData.BrandId,
-                HardwareTypeId = dto.HardwareData.HardwareTypeId
-            };
+        //     // 1. Create the base Hardware entity
+        //     var hardware = new Hardware
+        //     {
+        //         Name = dto.HardwareData.Name,
+        //         Generation = dto.HardwareData.Generation,
+        //         MSRP = dto.HardwareData.MSRP,
+        //         ReleaseDate = dto.HardwareData.ReleaseDate,
+        //         BrandId = dto.HardwareData.BrandId,
+        //         HardwareTypeId = dto.HardwareData.HardwareTypeId
+        //     };
 
-            // 2. Attach the specific sub-type data
-            // Assuming 1 = CPU and 2 = GPU in your database
-            switch (dto.HardwareData.HardwareTypeId)
-            {
-                case 1:
-                    hardware.Cpu = new Cpu
-                    {
-                        CoreCount = dto.HardwareData.CoreCount ?? 0,
-                        ThreadCount = dto.HardwareData.ThreadCount ?? 0,
-                        BaseClock = dto.HardwareData.CpuBaseClock ?? 0,
-                        TDP = dto.HardwareData.TDP ?? 0
-                    };
-                    break;
-                case 2:
-                    hardware.Gpu = new Gpu
-                    {
-                        Vram = dto.HardwareData.Vram ?? 0,
-                        BaseClock = dto.HardwareData.GpuBaseClock ?? 0,
-                        BoostClock = dto.HardwareData.BoostClock ?? 0,
-                        GameClock = dto.HardwareData.GameClock ?? 0
-                    };
-                    break;
-                default:
-                    ModelState.AddModelError("HardwareTypeId", "The selected hardware type is not currently supported.");
-                    return View(dto);
-            }
+        //     // 2. Attach the specific sub-type data
+        //     // Assuming 1 = CPU and 2 = GPU in your database
+        //     switch (dto.HardwareData.HardwareTypeId)
+        //     {
+        //         case 1:
+        //             hardware.Cpu = new Cpu
+        //             {
+        //                 CoreCount = dto.HardwareData.CoreCount ?? 0,
+        //                 ThreadCount = dto.HardwareData.ThreadCount ?? 0,
+        //                 BaseClock = dto.HardwareData.CpuBaseClock ?? 0,
+        //                 TDP = dto.HardwareData.TDP ?? 0
+        //             };
+        //             break;
+        //         case 2:
+        //             hardware.Gpu = new Gpu
+        //             {
+        //                 Vram = dto.HardwareData.Vram ?? 0,
+        //                 BaseClock = dto.HardwareData.GpuBaseClock ?? 0,
+        //                 BoostClock = dto.HardwareData.BoostClock ?? 0,
+        //                 GameClock = dto.HardwareData.GameClock ?? 0
+        //             };
+        //             break;
+        //         default:
+        //             ModelState.AddModelError("HardwareTypeId", "The selected hardware type is not currently supported.");
+        //             return View(dto);
+        // //     }
 
-            _context.Hardwares.Add(hardware);
-            await _context.SaveChangesAsync(); 
+        //     _context.Hardwares.Add(hardware);
+        //     await _context.SaveChangesAsync(); 
             
-            return RedirectToAction("Index", "Admin");
-        }
+        //     return RedirectToAction("Index", "Admin");
+        // }
         
     }
 }

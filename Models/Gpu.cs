@@ -9,10 +9,11 @@ namespace pcp2p.Models
         [Key] // uses the same id as Hardware 
         public int HardwareId {get;set;}
         public Hardware Hardware {get;set;}
+        public string Generation {get;set;}
+        public string Architecture {get;set;}
         public int Vram {get;set;}
-        public int BaseClock {get;set;}
-        public int BoostClock {get;set;}
-        public int GameClock {get;set;}
-        public int TDP {get;set;}
+        public int? BaseClock {get;set;}
+        public int? BoostClock {get;set;}
+        public int? GameClock {get;set;}
     }
 }

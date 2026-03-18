@@ -16,7 +16,7 @@ namespace pcp2p.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.2")
+                .HasAnnotation("ProductVersion", "8.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -284,11 +284,29 @@ namespace pcp2p.Migrations
                     b.Property<int>("BoostClock")
                         .HasColumnType("int");
 
+                    b.Property<string>("CodeName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("CoreCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("TDP")
+                    b.Property<string>("Generation")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("L1_Cache")
                         .HasColumnType("int");
+
+                    b.Property<int>("L2_Cache")
+                        .HasColumnType("int");
+
+                    b.Property<int>("L3_Cache")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Socket")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("ThreadCount")
                         .HasColumnType("int");
@@ -303,17 +321,22 @@ namespace pcp2p.Migrations
                     b.Property<int>("HardwareId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BaseClock")
+                    b.Property<string>("Architecture")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("BaseClock")
                         .HasColumnType("int");
 
-                    b.Property<int>("BoostClock")
+                    b.Property<int?>("BoostClock")
                         .HasColumnType("int");
 
-                    b.Property<int>("GameClock")
+                    b.Property<int?>("GameClock")
                         .HasColumnType("int");
 
-                    b.Property<int>("TDP")
-                        .HasColumnType("int");
+                    b.Property<string>("Generation")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Vram")
                         .HasColumnType("int");
@@ -332,10 +355,6 @@ namespace pcp2p.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Generation")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<int>("HardwareTypeId")
                         .HasColumnType("int");
 
@@ -347,8 +366,11 @@ namespace pcp2p.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime(6)");
+                    b.Property<DateOnly>("ReleaseDate")
+                        .HasColumnType("date");
+
+                    b.Property<int>("TDP")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

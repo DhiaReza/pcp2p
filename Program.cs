@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using MySql.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+string gpufilepath = "docs/Data/gpu_data.json";
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -61,7 +61,7 @@ if (app.Environment.IsDevelopment())
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            SeedData.InitializeData(context);
+            await SeedData.InitBrand_Type(context,gpufilepath);
             await SeedData.SeedRolesAndAdmin(services);
         }
         catch (Exception ex)

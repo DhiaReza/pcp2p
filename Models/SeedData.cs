@@ -1,7 +1,11 @@
+using System.Configuration.Assemblies;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
 using pcp2p.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace pcp2p
 {
@@ -9,14 +13,14 @@ namespace pcp2p
     {
         private readonly ILogger _logger;
         private readonly AppDbContext _context;
-
         public SeedData(ILogger<SeedData> logger, AppDbContext context)
         {
             _logger = logger;
             _context = context;
         }
-        public static void InitializeData(AppDbContext context)
+        public static async Task InitBrand_Type(AppDbContext context, string gpufilepath)
         {
+
             // Check if data already exists
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
@@ -57,66 +61,48 @@ namespace pcp2p
                 NameUppercase = "GPU",
                 NameCapitalized = "Gpu"
             }; // 02
-
-            // 2. Create Hardware with specific sub-types
-            var i9 = new Hardware
-            {
-                Name = "Core i9-13900K",
-                Generation = "13th Gen",
-                MSRP = 589.00m,
-                ReleaseDate = new DateTime(2022, 10, 20),
-                Brand = intel,
-                HardwareType = cpuType,
-                Cpu = new Cpu 
-                { 
-                    CoreCount = 24, 
-                    ThreadCount = 32, 
-                    BaseClock = 3000, 
-                    BoostClock = 5800, 
-                    TDP = 125 
-                }
-            };
-
-            var rtx4090 = new Hardware
-            {
-                Name = "GeForce RTX 4090",
-                Generation = "Ada Lovelace",
-                MSRP = 1599.00m,
-                ReleaseDate = new DateTime(2022, 10, 12),
-                Brand = nvidia,
-                HardwareType = gpuType,
-                Gpu = new Gpu 
-                { 
-                    Vram = 24, 
-                    BaseClock = 2230, 
-                    BoostClock = 2520, 
-                    GameClock = 2520, 
-                    TDP = 450 
-                }
-            };
-
-            var rx6800xt = new Hardware
-            {
-                Name = "Radeon RX 6800 XT",
-                Generation = "NAVI II",
-                MSRP = 649.00m,
-                ReleaseDate = new DateTime(2020, 10, 28),
-                Brand = amd,
-                HardwareType = gpuType,
-                Gpu = new Gpu 
-                { 
-                    Vram = 16, 
-                    BaseClock = 1825, 
-                    BoostClock = 2250, 
-                    GameClock = 2015, 
-                    TDP = 300
-                }
-            };
             
-            // 3. Save to Database
-            context.Hardwares.AddRange(i9, rtx4090, rx6800xt);
-            context.SaveChanges();
+            // 2. Save to Database
+            context.brands.AddRange(intel,amd,nvidia);
+            context.hardwareTypes.AddRange(gpuType, cpuType);
+            await context.SaveChangesAsync();
+
+            // Create dictionaries ONLY after confirming data exists
+            var allBrands = await context.brands.ToDictionaryAsync(b => b.NameLowercase);
+            var allTypes = await context.hardwareTypes.ToDictionaryAsync(t => t.NameLowercase);
+                
+            string jsonData = File.ReadAllText(gpufilepath);
+            List<GPUSeedDTO> Gpu = JsonConvert.DeserializeObject<List<GPUSeedDTO>>(jsonData);
+
+            foreach(var gpu in Gpu)
+            {
+                if (allBrands.TryGetValue(gpu.Brand.ToLower(), out var matchedBrand) &&
+                    allTypes.TryGetValue(gpu.HardwareType.ToLower(), out var matchedType))
+                {
+                    var hardware = new Hardware
+                    {
+                        Name = gpu.Name,
+                        MSRP = gpu.MSRP,
+                        ReleaseDate = DateOnly.ParseExact(gpu.ReleaseDate, "d-M-yyyy"),
+                        TDP = gpu.Gpu.TDP,
+                        Brand = matchedBrand,
+                        HardwareType = matchedType,
+                        Gpu = new Gpu
+                        {
+                            Generation = gpu.Generation,
+                            Architecture = gpu.Architecture,
+                            Vram = gpu.Gpu.Vram,
+                            BaseClock = gpu.Gpu.BaseClock,
+                            BoostClock = gpu.Gpu.BoostClock,
+                            GameClock = gpu.Gpu.GameClock
+                        }
+                    };
+                    context.Hardwares.Add(hardware);
+                }
+            }
+            await context.SaveChangesAsync();
         }
+
         public static async Task SeedRolesAndAdmin(IServiceProvider serviceProvider)
         {
             // Resolve the Managers from the Service Provider

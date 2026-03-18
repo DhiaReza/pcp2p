@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BHDQblukkV8=",
+  "dgSpecHash": "2syfNTv2eMk=",
   "success": true,
   "projectFilePath": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "/home/fahreza/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/home/fahreza/.nuget/packages/mysql.data/9.6.0/mysql.data.9.6.0.nupkg.sha512",
     "/home/fahreza/.nuget/packages/mysql.entityframeworkcore/8.0.22/mysql.entityframeworkcore.8.0.22.nupkg.sha512",
+    "/home/fahreza/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
     "/home/fahreza/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/home/fahreza/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/home/fahreza/.nuget/packages/system.composition/6.0.0/system.composition.6.0.0.nupkg.sha512",
