@@ -15,11 +15,12 @@ namespace pcp2p.Models
         public string Socket {get;set;}
         public int CoreCount {get;set;}
         public int ThreadCount {get;set;}
-        public int BaseClock {get;set;}
-        public int BoostClock {get;set;}
-        public int L1_Cache {get;set;}
-        public int L2_Cache {get;set;}
-        public int L3_Cache {get;set;}
+        public float BaseClock {get;set;}
+        public float TurboClock {get;set;}
+        public float L1_Cache {get;set;}
+        public float L2_Cache {get;set;}
+        public float L3_Cache {get;set;}
+        
         
     }
 }

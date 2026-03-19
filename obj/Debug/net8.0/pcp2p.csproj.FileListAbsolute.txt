@@ -274,3 +274,4 @@
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/Debug/net8.0/pcp2p.sourcelink.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/docs/Data/gpu_data.json
 /home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/Newtonsoft.Json.dll
+/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/bin/Debug/net8.0/CsvHelper.dll

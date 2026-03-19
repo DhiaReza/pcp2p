@@ -278,11 +278,8 @@ namespace pcp2p.Migrations
                     b.Property<int>("HardwareId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BaseClock")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BoostClock")
-                        .HasColumnType("int");
+                    b.Property<float>("BaseClock")
+                        .HasColumnType("float");
 
                     b.Property<string>("CodeName")
                         .IsRequired()
@@ -295,14 +292,14 @@ namespace pcp2p.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("L1_Cache")
-                        .HasColumnType("int");
+                    b.Property<float>("L1_Cache")
+                        .HasColumnType("float");
 
-                    b.Property<int>("L2_Cache")
-                        .HasColumnType("int");
+                    b.Property<float>("L2_Cache")
+                        .HasColumnType("float");
 
-                    b.Property<int>("L3_Cache")
-                        .HasColumnType("int");
+                    b.Property<float>("L3_Cache")
+                        .HasColumnType("float");
 
                     b.Property<string>("Socket")
                         .IsRequired()
@@ -310,6 +307,9 @@ namespace pcp2p.Migrations
 
                     b.Property<int>("ThreadCount")
                         .HasColumnType("int");
+
+                    b.Property<float>("TurboClock")
+                        .HasColumnType("float");
 
                     b.HasKey("HardwareId");
 

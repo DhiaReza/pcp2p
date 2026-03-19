@@ -1,11 +1,9 @@
-using System.Configuration.Assemblies;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
 using pcp2p.Models;
 using Microsoft.EntityFrameworkCore;
+using CsvHelper;
+using System.Globalization;
 
 namespace pcp2p
 {
@@ -18,7 +16,7 @@ namespace pcp2p
             _logger = logger;
             _context = context;
         }
-        public static async Task InitBrand_Type(AppDbContext context, string gpufilepath)
+        public static async Task InitBrandType(AppDbContext context)
         {
 
             // Check if data already exists
@@ -28,7 +26,7 @@ namespace pcp2p
             // 1. Create Lookup Data
             var intel = new Brand 
             { 
-                Name = "Intel",
+                Name = "INTEL",
                 NameCapitalized = "Intel",
                 NameLowercase = "intel",
                 NameUppercase = "INTEL" 
@@ -46,14 +44,14 @@ namespace pcp2p
                 NameCapitalized = "Nvidia",
                 NameLowercase = "nvidia",
                 NameUppercase = "NVIDIA"
-            }; // 03
+            }; // 01
             var cpuType = new HardwareType 
             { 
                 Name = "CPU",
                 NameLowercase = "cpu",
                 NameUppercase = "CPU",
                 NameCapitalized = "Cpu"
-            }; // 01
+            }; // 02
             var gpuType = new HardwareType
             { 
                 Name = "GPU",
@@ -66,8 +64,11 @@ namespace pcp2p
             context.brands.AddRange(intel,amd,nvidia);
             context.hardwareTypes.AddRange(gpuType, cpuType);
             await context.SaveChangesAsync();
-
-            // Create dictionaries ONLY after confirming data exists
+        }
+        
+        public static async Task SeedGPU(AppDbContext context, string gpufilepath)
+        {
+                        // Create dictionaries ONLY after confirming data exists
             var allBrands = await context.brands.ToDictionaryAsync(b => b.NameLowercase);
             var allTypes = await context.hardwareTypes.ToDictionaryAsync(t => t.NameLowercase);
                 
@@ -98,6 +99,46 @@ namespace pcp2p
                         }
                     };
                     context.Hardwares.Add(hardware);
+                }
+            }
+            await context.SaveChangesAsync();
+        }
+
+        public static async Task SeedCPU(AppDbContext context,string cpufilepath)
+        {
+            using (var reader = new StreamReader(cpufilepath))
+            using (var csv = new CsvReader(reader))
+            {
+                csv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
+                csv.Configuration.RegisterClassMap<CPUMap>();
+                csv.Configuration.Delimiter = ",";
+
+                var cpus = csv.GetRecords<CPUSeedDTO>();
+                foreach(var cpu in cpus)
+                {
+                    var hardware = new Hardware
+                    {
+                        Name = cpu.Name,
+                        MSRP =  cpu.MSRP,
+                        ReleaseDate = DateOnly.ParseExact(cpu.ReleaseDate, "d-M-yyyy"),
+                        TDP = cpu.TDP,
+                        HardwareType = await context.hardwareTypes.Where(b => b.Name == "CPU").FirstOrDefaultAsync(),
+                        Brand = await context.brands.Where(b => b.Name == cpu.Brand).FirstOrDefaultAsync(),
+                        Cpu = new Cpu
+                        {
+                            CodeName = cpu.Codename,
+                            Generation = cpu.Generation,
+                            Socket = cpu.Socket,
+                            CoreCount = cpu.CoreCount,
+                            ThreadCount = cpu.ThreadCount,
+                            BaseClock = cpu.BaseClock,
+                            TurboClock = cpu.TurboClock,
+                            L1_Cache = cpu.L1Cache,
+                            L2_Cache = cpu.L2Cache,
+                            L3_Cache = cpu.L3Cache
+                        }
+                    };
+                    context.Add(hardware);
                 }
             }
             await context.SaveChangesAsync();

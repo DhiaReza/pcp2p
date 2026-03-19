@@ -17,5 +17,10 @@ namespace pcp2p.Models
 
         // hardware key
         public ICollection<Hardware> Hardwares { get; set; } = new List<Hardware>();
+
+        public static implicit operator HardwareType(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
