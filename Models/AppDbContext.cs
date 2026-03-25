@@ -13,8 +13,10 @@ namespace pcp2p.Models
         public DbSet<Brand> brands {get;set;}
         public DbSet<Benchmark> benchmarks {get;set;}
         public DbSet<HardwareType> hardwareTypes {get;set;}
+        public DbSet<TestSource>  testTypes {get;set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // each hardware link to one CPU or GPU
             // CPU settings
             // set primary CPU key to hardware Id.
             modelBuilder.Entity<Cpu>()
@@ -39,8 +41,6 @@ namespace pcp2p.Models
             .HasForeignKey<Gpu>(g => g.HardwareId)
             .OnDelete(DeleteBehavior.Cascade);
 
-            // each hardware link to one CPU or GPU
-
             // decimal precision for MSRP
             modelBuilder.Entity<Hardware>()
             .Property(h => h.MSRP)
@@ -64,6 +64,15 @@ namespace pcp2p.Models
                 .HasOne(h => h.HardwareType)   // Each hardware has ONE Type (e.g., CPU)
                 .WithMany(h => h.Hardwares)    // But one Type has MANY Hardwares
                 .HasForeignKey(h => h.HardwareTypeId);
+
+            modelBuilder.Entity<TestSource>()
+                .HasIndex(t => t.Name) // Good practice to index unique types like "Raster" or "Ray Tracing"
+                .IsUnique();           // Ensures you can't have two rows with the same Type name
+
+            modelBuilder.Entity<Benchmark>()
+                .HasOne(b => b.TestSource)   // Each Benchmark has ONE TestType
+                .WithMany()                // A TestType can have MANY Benchmarks (or zero, depending on your logic)
+                .HasForeignKey(b => b.TestTypeId); // The link is stored in the 'TestTypeId' column
 
             base.OnModelCreating(modelBuilder);
         }

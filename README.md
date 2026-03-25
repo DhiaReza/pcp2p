@@ -16,13 +16,68 @@ use their own price so that they can judge whether the device is worth it or not
 ## Price to Performance Ratio :
 <p>The price to performance ratio will be calculated using : </p>
 <p></p>
-p2p = avg FPS / MSRP
+p2p = avg FPS / MSRP (or user defined price)
 <p></p>
 <p>where :</p>
 p2p = price to performance
 
 ### Todo
-1. Compile GPU hardware from Nvidia, AMD, and Intel dating back from 2015 (GTX 1000)
-Sources : 
-https://www.videocardbenchmark.net/high_end_gpus.html
-https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html
+
+🟢 The User Flow Map
+Landing: Hero section with a clear promise + Quick Filters.
+Selection: User selects Category (GPU/CPU) → Selects Budget/Use Case.
+Discovery: List of top "Value Picks" based on your Price-to-Performance algorithm.
+Comparison Mode: User clicks two items to open the side-by-side view.
+Deep Dive: Detailed breakdown with charts and a final "Verdict."
+🖥️ Page 1: The Landing Page (Home)
+Goal: Immediate value proposition and quick filtering without clutter.
+
+Header
+Logo (Left): ValueChip ⚡
+Nav Links: GPU Guide | CPU Guide | Methodology | About
+CTA Button: "Start Comparison"
+Hero Section (Center Stage)
+Headline: "Stop Overpaying. Find the Best Price-to-Performance Ratio."
+Sub-headline: Compare real-world gaming FPS and overall processing power against current market prices.
+Primary Action Bar (The Filter): A horizontal bar with three distinct tabs:
+🔍 Find a GPU (Default)
+🧠 Find a CPU
+⚖️ Compare Two Items
+Quick Filters (Dropdowns next to the tabs):
+Budget: 
+0
+−
+0−500 | 
+500
+−
+500−1000 | $1000+
+Use Case: 🎮 Gaming | 💻 Streaming | 🎬 Rendering
+Featured Section: "Today's Best Value Picks"
+A carousel or grid showing 3 cards based on the current market.
+Card Example: RTX 4060 Ti
+Tag: 🔥 Best Value Under $350
+Metric: 120 FPS Avg (Raster) | Score: 9.8/10
+Price Trend: 📉 -5% this week
+🖥️ Page 2: The Selection List (Discovery)
+Goal: Let users browse options based on their specific constraints before comparing.
+
+Sidebar Filters (Left):
+Max Price Slider (
+0
+−
+0−2000)
+VRAM Size (8GB, 12GB, 16GB+)
+Release Year
+Architecture Series (e.g., RTX 40-series only)
+Main Content Area:
+List of products sorted by "Best Value Score" (Your proprietary metric).
+Each row shows: Image | Name | Price | Performance/Price Ratio (Highlighted in Green if high, Red if low).
+Hover effect reveals a small bar chart comparing it to the previous generation.
+🖥️ Page 3: The Comparison Tool (The Core Feature)
+Goal: Visualize the difference clearly and justify the price gap.
+Accessed via "Compare Two Items" button or clicking "Add to Compare" on two different products.
+
+Layout Structure: Split Screen
+The screen is divided into two vertical columns (Left vs. Right). A toggle switch at the top allows users to swap items instantly.
+
+

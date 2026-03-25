@@ -217,31 +217,39 @@ namespace pcp2p.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<int>("Date")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GraphicsSetting")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("HardwareId")
                         .HasColumnType("int");
 
-                    b.Property<string>("NameCapitalized")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("NameLowercase")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NameUppercase")
+                    b.Property<string>("Resolution")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
+                    b.Property<string>("TestSubject")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("TestTypeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("HardwareId");
+
+                    b.HasIndex("TestTypeId");
 
                     b.ToTable("benchmarks");
                 });
@@ -408,6 +416,24 @@ namespace pcp2p.Migrations
                     b.ToTable("hardwareTypes");
                 });
 
+            modelBuilder.Entity("pcp2p.Models.TestType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Type")
+                        .IsUnique();
+
+                    b.ToTable("testTypes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -467,7 +493,15 @@ namespace pcp2p.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("pcp2p.Models.TestType", "TestType")
+                        .WithMany()
+                        .HasForeignKey("TestTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Hardware");
+
+                    b.Navigation("TestType");
                 });
 
             modelBuilder.Entity("pcp2p.Models.Cpu", b =>

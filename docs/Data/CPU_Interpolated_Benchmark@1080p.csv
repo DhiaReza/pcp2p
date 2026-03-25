@@ -1,0 +1,42 @@
+CPU Name,FPS,Source
+Ryzen 9 7950X3D,222,2025 measured
+Ryzen 7 7800X3D,220,2025 measured
+Ryzen 9 7900X3D,212,2025 measured
+Core i9-13900KS,202,2025 measured
+Core i9-13900K,200,2025 measured
+Core i7-13700K,197,2025 measured
+Ryzen 7 5800X3D,194,2025 measured
+Core i5-13600K,187,2025 measured
+Core i9-12900KS,186,extrapolated
+Ryzen 5 5600X3D,181,2025 measured
+Ryzen 9 7950X,179,2025 measured
+Ryzen 7 7700,177,2025 measured
+Ryzen 9 7900X,177,2025 measured
+Core i9-12900K,172,2025 measured
+Ryzen 9 7900,174,2025 measured
+Ryzen 7 7700X,173,2025 measured
+Ryzen 5 7600X,168,2025 measured
+Core i9-11900K,167,extrapolated
+Core i7-12700K,165,2025 measured
+Ryzen 9 5900X,147,2025 measured
+Ryzen 5 7600,159,2025 measured
+Core i5-12600K,157,2025 measured
+Core i5-12490F,163,extrapolated
+Core i5-13400,153,2025 measured
+Ryzen 9 5950X,148,2025 measured
+Ryzen 7 5800X,161,extrapolated
+Core i5-12400,142,2025 measured
+Ryzen 7 5700X,142,2025 measured
+Ryzen 5 5600X,138,2025 measured
+Ryzen 5 5600,137,2025 measured
+Core i7-11700K,156,extrapolated
+Core i5-11600K,150,extrapolated
+Core i5-11400,148,extrapolated
+Core i3-13100F,127,2025 measured
+Core i3-12100,126,2025 measured
+Ryzen 5 5600G,118,2025 measured
+Ryzen 5 5500,118,2025 measured
+Ryzen 5 3600X,123,extrapolated
+Ryzen 5 3600,120,extrapolated
+Ryzen 3 3300X,117,extrapolated
+Core i3-10100,108,extrapolated

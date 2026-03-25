@@ -16,7 +16,7 @@ namespace pcp2p
             _logger = logger;
             _context = context;
         }
-        public static async Task InitBrandType(AppDbContext context)
+        public static async Task SeedBrandAndType(AppDbContext context)
         {
 
             // Check if data already exists
@@ -181,5 +181,75 @@ namespace pcp2p
                 }
             }
         }  
+
+        public static async Task SeedCPUBenchmark2022(AppDbContext context, string filepath)
+        {
+            using (var reader = new StreamReader(filepath))
+            using (var csv = new CsvReader(reader))
+            {
+                csv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
+                csv.Configuration.RegisterClassMap<CPU_Benchmark_Map>();
+                csv.Configuration.Delimiter = ",";
+
+                var cpus = csv.GetRecords<CPU_Benchmark>();
+                foreach(var cpu in cpus)
+                {
+                    var benchmark = new Benchmark
+                    {
+                        Name = cpu.Name,
+                        Date =  2022,
+                        Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
+                        TestSource = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync(),
+                        TestSubject = "Gaming",
+                        Score = cpu.FPS,
+                        Resolution = "1080p",
+                        GraphicsSetting = ""
+                    };
+                    context.Add(benchmark);
+                }
+            }
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedCPUBenchmark2025(AppDbContext context, string filepath)
+        {
+            using (var reader = new StreamReader(filepath))
+            using (var csv = new CsvReader(reader))
+            {
+                csv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
+                csv.Configuration.RegisterClassMap<CPU_Benchmark_Map>();
+                csv.Configuration.Delimiter = ",";
+
+                var cpus = csv.GetRecords<CPU_Benchmark>();
+                foreach(var cpu in cpus)
+                {
+                    var benchmark = new Benchmark
+                    {
+                        Name = cpu.Name,
+                        Date =  2025,
+                        Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
+                        TestSource = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync(),
+                        TestSubject = "Gaming",
+                        Score = cpu.FPS,
+                        Resolution = "1080p",
+                        GraphicsSetting = ""
+                    };
+                    context.Add(benchmark);
+                }
+            }
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedTestType(AppDbContext context)
+        {
+            var original = new TestSource
+            {
+                Name = "original"
+            };
+            var interpolated = new TestSource
+            {
+                Name = "interpolated"
+            };
+            context.AddRange(original,interpolated);
+            await context.SaveChangesAsync();
+        }
     }
 }

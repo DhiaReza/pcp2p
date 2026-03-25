@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 string gpufilepath = "docs/Data/gpu_data.json";
-string cpufilepath = "docs/Data/cleaned_cpu_data.csv";
+string cpufilepath = "docs/Data/CPU_Cleaned_Data.csv";
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -63,10 +63,13 @@ if (app.Environment.IsDevelopment())
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            await SeedData.InitBrandType(context);
+            await SeedData.SeedBrandAndType(context);
+            await SeedData.SeedTestType(context);
             await SeedData.SeedGPU(context, gpufilepath);
             await SeedData.SeedCPU(context, cpufilepath);
             await SeedData.SeedRolesAndAdmin(services);
+            await SeedData.SeedCPUBenchmark2022(context, "docs/Data/CPU_2022_Benchmark@1080p.csv");
+            await SeedData.SeedCPUBenchmark2025(context, "docs/Data/CPU_2025_Benchmark@1080p.csv");
         }
         catch (Exception ex)
         {
