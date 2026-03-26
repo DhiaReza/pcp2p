@@ -71,10 +71,12 @@ if (app.Environment.IsDevelopment())
             await SeedData.SeedGPU(context, gpufilepath);
             await SeedData.SeedCPU(context, cpufilepath);
             await SeedData.SeedRolesAndAdmin(services);
-            //await SeedData.SeedCPUBenchmark2022(context, "docs/Data/CPU_2022_Benchmark@1080p.csv");
-            //await SeedData.SeedCPUBenchmark2025(context, "docs/Data/CPU_2025_Benchmark@1080p.csv");
-            //await SeedData.SeedCPUBenchmarInterpolated(context, "docs/Data/CPU_Interpolated_Benchmark@1080p.csv");
+            await SeedData.SeedCPUBenchmark2022(context, "docs/Data/CPU_2022_Benchmark@1080p.csv");
+            await SeedData.SeedCPUBenchmark2025(context, "docs/Data/CPU_2025_Benchmark@1080p.csv");
+            await SeedData.SeedCPUBenchmarInterpolated(context, "docs/Data/CPU_Interpolated_Benchmark@1080p.csv");
             await SeedData.SeedGPUBenchmark2022(context, "docs/Data/GPU_2022_Benchmark_Overall_Raster.csv");
+            await SeedData.SeedGPUBenchmark2025(context, "docs/Data/GPU_2025_Benchmark_Overall_Raster.csv");
+            await SeedData.SeedGPUBenchmarkInterpolated(context, "docs/Data/GPU_Interpolated_Benchmark_Overall_Raster.csv");
         }
         catch (Exception ex)
         {

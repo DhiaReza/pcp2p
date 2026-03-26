@@ -185,6 +185,10 @@ namespace pcp2p
 
         public static async Task SeedCPUBenchmark2022(AppDbContext context, string filepath)
         {
+            TestSource source = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync();
+            TestSubject subject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync();
+            TestResolution resolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync();
+
             using (var reader = new StreamReader(filepath))
             using (var csv = new CsvReader(reader))
             {
@@ -200,10 +204,10 @@ namespace pcp2p
                         Name = cpu.Name,
                         Date =  2022,
                         Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
-                        TestSource = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync(),
-                        TestSubject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync(),
+                        TestSource = source,
+                        TestSubject = subject,
                         Score = cpu.FPS,
-                        TestResolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync(),
+                        TestResolution = resolution,
                     };
                     context.Add(benchmark);
                 }
@@ -212,6 +216,10 @@ namespace pcp2p
         }
         public static async Task SeedCPUBenchmark2025(AppDbContext context, string filepath)
         {
+            TestSource source = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync();
+            TestSubject subject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync();
+            TestResolution resolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync();
+
             using (var reader = new StreamReader(filepath))
             using (var csv = new CsvReader(reader))
             {
@@ -227,10 +235,10 @@ namespace pcp2p
                         Name = cpu.Name,
                         Date =  2025,
                         Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
-                        TestSource = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync(),
-                        TestSubject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync(),
+                        TestSource = source,
+                        TestSubject = subject,
                         Score = cpu.FPS,
-                        TestResolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync(),
+                        TestResolution = resolution,
                     };
                     context.Add(benchmark);
                 }
@@ -239,6 +247,10 @@ namespace pcp2p
         }
         public static async Task SeedCPUBenchmarInterpolated(AppDbContext context, string filepath)
         {
+            TestSource source = await context.testTypes.Where(b => b.Name == "interpolated").FirstOrDefaultAsync();
+            TestSubject subject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync();
+            TestResolution resolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync();
+
             using (var reader = new StreamReader(filepath))
             using (var csv = new CsvReader(reader))
             {
@@ -252,12 +264,11 @@ namespace pcp2p
                     var benchmark = new Benchmark
                     {
                         Name = cpu.Name,
-                        Date =  2025,
                         Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
-                        TestSource = await context.testTypes.Where(b => b.Name == "interpolated").FirstOrDefaultAsync(),
-                        TestSubject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync(),
+                        TestSource = source,
+                        TestSubject = subject,
                         Score = cpu.FPS,
-                        TestResolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync(),
+                        TestResolution = resolution,
                     };
                     context.Add(benchmark);
                 }
@@ -313,6 +324,154 @@ namespace pcp2p
                     {
                         Name = gpu.Name,
                         Date = 2022,
+                        Hardware = hardware, // This is now guaranteed not to be null
+                        TestSource = originalSource,
+                        TestSubject = rasterSubject,
+                        Score = s.Score,
+                        TestResolution = s.Res,
+                        TestGraphic = s.Graph
+                    });
+                }
+            }
+            // --- NEW PRINT LOGIC ---
+            Console.WriteLine("\n--- Summary of Benchmarks to be Saved ---");
+            
+            var addedBenchmarks = context.ChangeTracker.Entries<Benchmark>()
+                .Where(e => e.State == EntityState.Added)
+                .Select(e => e.Entity);
+
+            foreach (var b in addedBenchmarks)
+            {
+                Console.WriteLine($"Ready to add: {b.Name} | Res: {b.TestResolution?.Name} | Graphic: {b.TestGraphic?.Name} | Score: {b.Score}");
+            }
+            
+            Console.WriteLine($"Total records to insert: {addedBenchmarks.Count()}\n");
+            // -----------------------
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedGPUBenchmark2025(AppDbContext context, string filepath)
+        {
+            using var reader = new StreamReader(filepath);
+            using var csv = new CsvReader(reader);
+            
+            csv.Configuration.RegisterClassMap<GPU_Benchmark_Map>();
+
+            // 1. Load data into memory so we can loop multiple times
+            var gpus = csv.GetRecords<GPU_Benchmark>().ToList();
+
+            // 2. Pre-fetch common data once to avoid thousands of DB calls
+            var originalSource = await context.testTypes.FirstOrDefaultAsync(b => b.Name == "original");
+            var rasterSubject = await context.testSubjects.FirstOrDefaultAsync(b => b.Name == "raster");
+            
+            var res1080p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1080p");
+            var res1440p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1440p");
+            var res4k = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "4k");
+
+            var medGraphic = await context.testGraphics.FirstOrDefaultAsync(b => b.Name == "medium");
+            var ultGraphic = await context.testGraphics.FirstOrDefaultAsync(b => b.Name == "ultra");
+
+            // 3. Single loop to create all 4 benchmarks per GPU
+            foreach (var gpu in gpus)
+            {
+                // Try to find the hardware
+                var hardware = await context.Hardwares.FirstOrDefaultAsync(b => b.Name == gpu.Name);
+
+                // 1. Validation: If hardware is null, the database will crash on SaveChanges
+                if (hardware == null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"[ERROR] Hardware not found: '{gpu.Name}'. Skipping these benchmarks.");
+                    Console.ResetColor();
+                    continue; // Skip to the next GPU in the CSV
+                }
+
+                var scores = new[] {
+                    (Score: gpu.Medium1080p, Res: res1080p, Graph: medGraphic),
+                    (Score: gpu.Ultra1080p,  Res: res1080p, Graph: ultGraphic),
+                    (Score: gpu.Ultra1440p,  Res: res1440p, Graph: ultGraphic),
+                    (Score: gpu.Ultra4K,     Res: res4k,     Graph: ultGraphic)
+                };
+
+                foreach (var s in scores)
+                {
+                    context.benchmarks.Add(new Benchmark
+                    {
+                        Name = gpu.Name,
+                        Date = 2025,
+                        Hardware = hardware, // This is now guaranteed not to be null
+                        TestSource = originalSource,
+                        TestSubject = rasterSubject,
+                        Score = s.Score,
+                        TestResolution = s.Res,
+                        TestGraphic = s.Graph
+                    });
+                }
+            }
+            // --- NEW PRINT LOGIC ---
+            Console.WriteLine("\n--- Summary of Benchmarks to be Saved ---");
+            
+            var addedBenchmarks = context.ChangeTracker.Entries<Benchmark>()
+                .Where(e => e.State == EntityState.Added)
+                .Select(e => e.Entity);
+
+            foreach (var b in addedBenchmarks)
+            {
+                Console.WriteLine($"Ready to add: {b.Name} | Res: {b.TestResolution?.Name} | Graphic: {b.TestGraphic?.Name} | Score: {b.Score}");
+            }
+            
+            Console.WriteLine($"Total records to insert: {addedBenchmarks.Count()}\n");
+            // -----------------------
+            await context.SaveChangesAsync();
+        }
+
+        public static async Task SeedGPUBenchmarkInterpolated(AppDbContext context, string filepath)
+        {
+            using var reader = new StreamReader(filepath);
+            using var csv = new CsvReader(reader);
+            
+            csv.Configuration.RegisterClassMap<GPU_Benchmark_Map>();
+
+            // 1. Load data into memory so we can loop multiple times
+            var gpus = csv.GetRecords<GPU_Benchmark>().ToList();
+
+            // 2. Pre-fetch common data once to avoid thousands of DB calls
+            var originalSource = await context.testTypes.FirstOrDefaultAsync(b => b.Name == "interpolated");
+            var rasterSubject = await context.testSubjects.FirstOrDefaultAsync(b => b.Name == "raster");
+            
+            var res1080p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1080p");
+            var res1440p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1440p");
+            var res4k = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "4k");
+
+            var medGraphic = await context.testGraphics.FirstOrDefaultAsync(b => b.Name == "medium");
+            var ultGraphic = await context.testGraphics.FirstOrDefaultAsync(b => b.Name == "ultra");
+
+            // 3. Single loop to create all 4 benchmarks per GPU
+            foreach (var gpu in gpus)
+            {
+                // Try to find the hardware
+                var hardware = await context.Hardwares.FirstOrDefaultAsync(b => b.Name == gpu.Name);
+
+                // 1. Validation: If hardware is null, the database will crash on SaveChanges
+                if (hardware == null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"[ERROR] Hardware not found: '{gpu.Name}'. Skipping these benchmarks.");
+                    Console.ResetColor();
+                    continue; // Skip to the next GPU in the CSV
+                }
+
+                var scores = new[] {
+                    (Score: gpu.Medium1080p, Res: res1080p, Graph: medGraphic),
+                    (Score: gpu.Ultra1080p,  Res: res1080p, Graph: ultGraphic),
+                    (Score: gpu.Ultra1440p,  Res: res1440p, Graph: ultGraphic),
+                    (Score: gpu.Ultra4K,     Res: res4k,     Graph: ultGraphic)
+                };
+
+                foreach (var s in scores)
+                {
+                    context.benchmarks.Add(new Benchmark
+                    {
+                        Name = gpu.Name,
                         Hardware = hardware, // This is now guaranteed not to be null
                         TestSource = originalSource,
                         TestSubject = rasterSubject,

@@ -11,7 +11,7 @@ namespace pcp2p.Models
         // e.g., "RTX 4090 Raster"
         public string Name { get; set; }
         // Set to year only , yyyy
-        public int Date { get; set; }
+        public int? Date { get; set; }
         public int TestSourceId {get;set;}
         public TestSource TestSource {get;set;}
         public int HardwareId { get; set; }
