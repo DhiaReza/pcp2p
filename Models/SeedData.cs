@@ -4,6 +4,7 @@ using pcp2p.Models;
 using Microsoft.EntityFrameworkCore;
 using CsvHelper;
 using System.Globalization;
+using Microsoft.VisualBasic;
 
 namespace pcp2p
 {
@@ -68,7 +69,7 @@ namespace pcp2p
         
         public static async Task SeedGPU(AppDbContext context, string gpufilepath)
         {
-                        // Create dictionaries ONLY after confirming data exists
+            // Create dictionaries ONLY after confirming data exists
             var allBrands = await context.brands.ToDictionaryAsync(b => b.NameLowercase);
             var allTypes = await context.hardwareTypes.ToDictionaryAsync(t => t.NameLowercase);
                 
@@ -200,10 +201,9 @@ namespace pcp2p
                         Date =  2022,
                         Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
                         TestSource = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync(),
-                        TestSubject = "Gaming",
+                        TestSubject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync(),
                         Score = cpu.FPS,
-                        Resolution = "1080p",
-                        GraphicsSetting = ""
+                        TestResolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync(),
                     };
                     context.Add(benchmark);
                 }
@@ -228,17 +228,155 @@ namespace pcp2p
                         Date =  2025,
                         Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
                         TestSource = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync(),
-                        TestSubject = "Gaming",
+                        TestSubject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync(),
                         Score = cpu.FPS,
-                        Resolution = "1080p",
-                        GraphicsSetting = ""
+                        TestResolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync(),
                     };
                     context.Add(benchmark);
                 }
             }
             await context.SaveChangesAsync();
         }
-        public static async Task SeedTestType(AppDbContext context)
+        public static async Task SeedCPUBenchmarInterpolated(AppDbContext context, string filepath)
+        {
+            using (var reader = new StreamReader(filepath))
+            using (var csv = new CsvReader(reader))
+            {
+                csv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
+                csv.Configuration.RegisterClassMap<CPU_Benchmark_Map>();
+                csv.Configuration.Delimiter = ",";
+
+                var cpus = csv.GetRecords<CPU_Benchmark>();
+                foreach(var cpu in cpus)
+                {
+                    var benchmark = new Benchmark
+                    {
+                        Name = cpu.Name,
+                        Date =  2025,
+                        Hardware = await context.Hardwares.Where(b => b.Name == cpu.Name).FirstOrDefaultAsync(),
+                        TestSource = await context.testTypes.Where(b => b.Name == "interpolated").FirstOrDefaultAsync(),
+                        TestSubject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync(),
+                        Score = cpu.FPS,
+                        TestResolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync(),
+                    };
+                    context.Add(benchmark);
+                }
+            }
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedGPUBenchmark2022(AppDbContext context, string filepath)
+        {
+            using var reader = new StreamReader(filepath);
+            using var csv = new CsvReader(reader);
+            
+            csv.Configuration.RegisterClassMap<GPU_Benchmark_Map>();
+
+            // 1. Load data into memory so we can loop multiple times
+            var gpus = csv.GetRecords<GPU_Benchmark>().ToList();
+
+            // 2. Pre-fetch common data once to avoid thousands of DB calls
+            var originalSource = await context.testTypes.FirstOrDefaultAsync(b => b.Name == "original");
+            var rasterSubject = await context.testSubjects.FirstOrDefaultAsync(b => b.Name == "raster");
+            
+            var res1080p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1080p");
+            var res1440p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1440p");
+            var res4k = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "4k");
+
+            var medGraphic = await context.testGraphics.FirstOrDefaultAsync(b => b.Name == "medium");
+            var ultGraphic = await context.testGraphics.FirstOrDefaultAsync(b => b.Name == "ultra");
+
+            // 3. Single loop to create all 4 benchmarks per GPU
+            foreach (var gpu in gpus)
+            {
+                // Try to find the hardware
+                var hardware = await context.Hardwares.FirstOrDefaultAsync(b => b.Name == gpu.Name);
+
+                // 1. Validation: If hardware is null, the database will crash on SaveChanges
+                if (hardware == null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"[ERROR] Hardware not found: '{gpu.Name}'. Skipping these benchmarks.");
+                    Console.ResetColor();
+                    continue; // Skip to the next GPU in the CSV
+                }
+
+                var scores = new[] {
+                    (Score: gpu.Medium1080p, Res: res1080p, Graph: medGraphic),
+                    (Score: gpu.Ultra1080p,  Res: res1080p, Graph: ultGraphic),
+                    (Score: gpu.Ultra1440p,  Res: res1440p, Graph: ultGraphic),
+                    (Score: gpu.Ultra4K,     Res: res4k,     Graph: ultGraphic)
+                };
+
+                foreach (var s in scores)
+                {
+                    context.benchmarks.Add(new Benchmark
+                    {
+                        Name = gpu.Name,
+                        Date = 2022,
+                        Hardware = hardware, // This is now guaranteed not to be null
+                        TestSource = originalSource,
+                        TestSubject = rasterSubject,
+                        Score = s.Score,
+                        TestResolution = s.Res,
+                        TestGraphic = s.Graph
+                    });
+                }
+            }
+            // --- NEW PRINT LOGIC ---
+            Console.WriteLine("\n--- Summary of Benchmarks to be Saved ---");
+            
+            var addedBenchmarks = context.ChangeTracker.Entries<Benchmark>()
+                .Where(e => e.State == EntityState.Added)
+                .Select(e => e.Entity);
+
+            foreach (var b in addedBenchmarks)
+            {
+                Console.WriteLine($"Ready to add: {b.Name} | Res: {b.TestResolution?.Name} | Graphic: {b.TestGraphic?.Name} | Score: {b.Score}");
+            }
+            
+            Console.WriteLine($"Total records to insert: {addedBenchmarks.Count()}\n");
+            // -----------------------
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedGraphic(AppDbContext context)
+        {
+            var medium = new TestGraphic
+            {
+                Name = "medium"
+            };
+            var low = new TestGraphic
+            {
+                Name = "low"
+            };
+            var high = new TestGraphic
+            {
+                Name = "high"
+            };
+            var ultra = new TestGraphic
+            {
+                Name = "ultra"
+            };
+            context.AddRange(low,medium,high,ultra);
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedResolution(AppDbContext context)
+        {
+            var fhd = new TestResolution
+            {
+                Name = "1080p"
+            };
+            var qhd = new TestResolution
+            {
+                Name = "1440p"
+            };
+            var uhd = new TestResolution
+            {
+                Name = "4K"
+            };
+            context.AddRange(fhd,qhd,uhd);
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedSource(AppDbContext context)
         {
             var original = new TestSource
             {
@@ -249,6 +387,31 @@ namespace pcp2p
                 Name = "interpolated"
             };
             context.AddRange(original,interpolated);
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedTestSubject(AppDbContext context)
+        {
+            var raster = new TestSubject
+            {
+                Name = "raster"
+            };
+            var rt = new TestSubject
+            {
+                Name = "raytracing"
+            };
+            var gaming = new TestSubject
+            {
+                Name = "gaming"
+            };
+            var single = new TestSubject
+            {
+                Name = "singlecore"
+            };
+            var multi = new TestSubject
+            {
+                Name = "multicore"
+            };
+            context.AddRange(raster,rt,gaming,single,multi);
             await context.SaveChangesAsync();
         }
     }

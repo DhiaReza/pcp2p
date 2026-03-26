@@ -14,6 +14,9 @@ namespace pcp2p.Models
         public DbSet<Benchmark> benchmarks {get;set;}
         public DbSet<HardwareType> hardwareTypes {get;set;}
         public DbSet<TestSource>  testTypes {get;set;}
+        public DbSet<TestGraphic> testGraphics {get;set;}
+        public DbSet<TestResolution> testResolutions {get;set;}
+        public DbSet<TestSubject> testSubjects {get;set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // each hardware link to one CPU or GPU
@@ -72,8 +75,34 @@ namespace pcp2p.Models
             modelBuilder.Entity<Benchmark>()
                 .HasOne(b => b.TestSource)   // Each Benchmark has ONE TestType
                 .WithMany()                // A TestType can have MANY Benchmarks (or zero, depending on your logic)
-                .HasForeignKey(b => b.TestTypeId); // The link is stored in the 'TestTypeId' column
+                .HasForeignKey(b => b.TestSourceId); // The link is stored in the 'TestTypeId' column
+            
+            modelBuilder.Entity<TestGraphic>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
 
+            modelBuilder.Entity<Benchmark>()
+                .HasOne(b => b.TestGraphic)   // Each Benchmark has ONE TestType
+                .WithMany()                // A TestType can have MANY Benchmarks (or zero, depending on your logic)
+                .HasForeignKey(b => b.TestGraphicId); // The link is stored in the 'TestTypeId' column
+            
+            modelBuilder.Entity<TestResolution>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+                
+            modelBuilder.Entity<Benchmark>()
+                .HasOne(b => b.TestResolution)   // Each Benchmark has ONE TestType
+                .WithMany()                // A TestType can have MANY Benchmarks (or zero, depending on your logic)
+                .HasForeignKey(b => b.TestResolutionId); // The link is stored in the 'TestTypeId' column
+
+            modelBuilder.Entity<TestSubject>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+                
+            modelBuilder.Entity<Benchmark>()
+                .HasOne(b => b.TestSubject)   // Each Benchmark has ONE TestType
+                .WithMany()                // A TestType can have MANY Benchmarks (or zero, depending on your logic)
+                .HasForeignKey(b => b.TestSubjectId); // The link is stored in the 'TestTypeId' column
             base.OnModelCreating(modelBuilder);
         }
     }

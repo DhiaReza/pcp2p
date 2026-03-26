@@ -61,7 +61,7 @@
         }
     },
     {
-        "Name": "GeForce RTX 4080 SUPER",
+        "Name": "GeForce RTX 4080 Super",
         "Generation": "GeForce 40",
         "Architecture": "Ada Lovelace",
         "MSRP": 999.0,
@@ -246,7 +246,7 @@
         }
     },
     {
-        "Name": "GeForce RTX 4070 Ti SUPER",
+        "Name": "GeForce RTX 4070 Ti Super",
         "Generation": "GeForce 40",
         "Architecture": "Ada Lovelace",
         "MSRP": 799.0,
@@ -338,7 +338,7 @@
         }
     },
     {
-        "Name": "GeForce RTX 4070 SUPER",
+        "Name": "GeForce RTX 4070 Super",
         "Generation": "GeForce 40",
         "Architecture": "Ada Lovelace",
         "MSRP": 599.0,
@@ -368,7 +368,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 5070",
+        "Name": "GeForce RTX 5070",
         "Generation": "GeForce 50",
         "Architecture": "Blackwell 2.0",
         "MSRP": 549.0,
@@ -383,7 +383,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 6750 XT",
+        "Name": "Radeon RX 6750 XT",
         "Generation": "Navi II (RX 6000)",
         "Architecture": "RDNA 2.0",
         "MSRP": 549.0,
@@ -399,7 +399,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 7900 GRE",
+        "Name": "Radeon RX 7900 GRE",
         "Generation": "Navi III (RX 7000)",
         "Architecture": "RDNA 3.0",
         "MSRP": 549.0,
@@ -415,7 +415,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 6700 XT",
+        "Name": "Radeon RX 6700 XT",
         "Generation": "Navi II (RX 6000)",
         "Architecture": "RDNA 2.0",
         "MSRP": 479.0,
@@ -431,7 +431,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 3070",
+        "Name": "GeForce RTX 3070",
         "Generation": "GeForce 30",
         "Architecture": "Ampere",
         "MSRP": 499.0,
@@ -446,7 +446,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 2080 Ti",
+        "Name": "GeForce RTX 2080 Ti",
         "Generation": "GeForce 20",
         "Architecture": "Turing",
         "MSRP": 999.0,
@@ -461,7 +461,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 4070",
+        "Name": "GeForce RTX 4070",
         "Generation": "GeForce 40",
         "Architecture": "Ada Lovelace",
         "MSRP": 599.0,
@@ -476,7 +476,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 7800 XT",
+        "Name": "Radeon RX 7800 XT",
         "Generation": "Navi III (RX 7000)",
         "Architecture": "RDNA 3.0",
         "MSRP": 499.0,
@@ -492,7 +492,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 3060 Ti",
+        "Name": "GeForce RTX 3060 Ti",
         "Generation": "GeForce 30",
         "Architecture": "Ampere",
         "MSRP": 399.0,
@@ -507,7 +507,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 2080",
+        "Name": "GeForce RTX 2080",
         "Generation": "GeForce 20",
         "Architecture": "Turing",
         "MSRP": 699.0,
@@ -522,7 +522,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 7700 XT",
+        "Name": "Radeon RX 7700 XT",
         "Generation": "Navi III (RX 7000)",
         "Architecture": "RDNA 3.0",
         "MSRP": 449.0,
@@ -538,7 +538,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 6650 XT",
+        "Name": "Radeon RX 6650 XT",
         "Generation": "Navi II (RX 6000)",
         "Architecture": "RDNA 2.0",
         "MSRP": 399.0,
@@ -554,7 +554,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 2070 SUPER",
+        "Name": "GeForce RTX 2070 Super",
         "Generation": "GeForce 20",
         "Architecture": "Turing",
         "MSRP": 499.0,
@@ -568,8 +568,23 @@
             "TDP": 215
         }
     },
+        {
+        "Name": "GeForce RTX 2070",
+        "Generation": "GeForce 20",
+        "Architecture": "Turing",
+        "MSRP": 499.0,
+        "ReleaseDate": "17-10-2018",
+        "Brand": "nvidia",
+        "HardwareType": "gpu",
+        "Gpu": {
+            "Vram": 8,
+            "BaseClock": 1410,
+            "BoostClock": 1620,
+            "TDP": 175
+        }
+    },
     {
-        "Name": "AMD Radeon RX 6600 XT",
+        "Name": "Radeon RX 6600 XT",
         "Generation": "Navi II (RX 6000)",
         "Architecture": "RDNA 2.0",
         "MSRP": 379.0,
@@ -585,7 +600,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 5700 XT",
+        "Name": "Radeon RX 5700 XT",
         "Generation": "Navi (RX 5000)",
         "Architecture": "RDNA 1.0",
         "MSRP": 399.0,
@@ -601,7 +616,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 5060",
+        "Name": "GeForce RTX 5060",
         "Generation": "GeForce 50",
         "Architecture": "Blackwell 2.0",
         "MSRP": 299.0,
@@ -616,7 +631,7 @@
         }
     },
     {
-        "Name": "AMD Radeon VII",
+        "Name": "Radeon VII",
         "Generation": "Vega II (Radeon VII)",
         "Architecture": "GCN 5.1",
         "MSRP": 699.0,
@@ -631,7 +646,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1080 Ti",
+        "Name": "GeForce GTX 1080 Ti",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 699.0,
@@ -646,7 +661,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 2060 SUPER",
+        "Name": "GeForce RTX 2060 Super",
         "Generation": "GeForce 20",
         "Architecture": "Turing",
         "MSRP": 399.0,
@@ -661,7 +676,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 5700",
+        "Name": "Radeon RX 5700",
         "Generation": "Navi (RX 5000)",
         "Architecture": "RDNA 1.0",
         "MSRP": 349.0,
@@ -677,7 +692,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 4060",
+        "Name": "GeForce RTX 4060",
         "Generation": "GeForce 40",
         "Architecture": "Ada Lovelace",
         "MSRP": 299.0,
@@ -692,7 +707,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 7600 XT",
+        "Name": "Radeon RX 7600 XT",
         "Generation": "Navi III (RX 7000)",
         "Architecture": "RDNA 3.0",
         "MSRP": 329.0,
@@ -708,7 +723,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 5600 XT",
+        "Name": "Radeon RX 5600 XT",
         "Generation": "Navi (RX 5000)",
         "Architecture": "RDNA 1.0",
         "MSRP": 279.0,
@@ -724,7 +739,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX Vega 64",
+        "Name": "Radeon RX Vega 64",
         "Generation": "Vega (RX Vega)",
         "Architecture": "GCN 5.0",
         "MSRP": 499.0,
@@ -739,7 +754,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1080",
+        "Name": "GeForce GTX 1080",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 599.0,
@@ -754,7 +769,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 3050 8GB",
+        "Name": "GeForce RTX 3050 8GB",
         "Generation": "GeForce 30",
         "Architecture": "Ampere",
         "MSRP": 249.0,
@@ -769,7 +784,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1070 Ti",
+        "Name": "GeForce GTX 1070 Ti",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 399.0,
@@ -784,7 +799,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX Vega 56",
+        "Name": "Radeon RX Vega 56",
         "Generation": "Vega (RX Vega)",
         "Architecture": "GCN 5.0",
         "MSRP": 399.0,
@@ -799,7 +814,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1660 SUPER",
+        "Name": "GeForce GTX 1660 Super",
         "Generation": "GeForce 16",
         "Architecture": "Turing",
         "MSRP": 229.0,
@@ -814,7 +829,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1660 Ti",
+        "Name": "GeForce GTX 1660 Ti",
         "Generation": "GeForce 16",
         "Architecture": "Turing",
         "MSRP": 279.0,
@@ -829,7 +844,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 7600",
+        "Name": "Radeon RX 7600",
         "Generation": "Navi III (RX 7000)",
         "Architecture": "RDNA 3.0",
         "MSRP": 269.0,
@@ -845,7 +860,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1660",
+        "Name": "GeForce GTX 1660",
         "Generation": "GeForce 16",
         "Architecture": "Turing",
         "MSRP": 219.0,
@@ -860,7 +875,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 590",
+        "Name": "Radeon RX 590",
         "Generation": "Polaris (RX 500)",
         "Architecture": "GCN 4.0",
         "MSRP": 279.0,
@@ -875,7 +890,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 6600",
+        "Name": "Radeon RX 6600",
         "Generation": "Navi II (RX 6000)",
         "Architecture": "RDNA 2.0",
         "MSRP": 329.0,
@@ -891,7 +906,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1650 SUPER",
+        "Name": "GeForce GTX 1650 Super",
         "Generation": "GeForce 16",
         "Architecture": "Turing",
         "MSRP": 159.0,
@@ -906,7 +921,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 6500 XT",
+        "Name": "Radeon RX 6500 XT",
         "Generation": "Navi II (RX 6000)",
         "Architecture": "RDNA 2.0",
         "MSRP": 199.0,
@@ -922,7 +937,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 980",
+        "Name": "GeForce GTX 980",
         "Generation": "GeForce 900",
         "Architecture": "Maxwell 2.0",
         "MSRP": 549.0,
@@ -937,7 +952,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1650",
+        "Name": "GeForce GTX 1650",
         "Generation": "GeForce 16",
         "Architecture": "Turing",
         "MSRP": 149.0,
@@ -952,7 +967,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 970",
+        "Name": "GeForce GTX 970",
         "Generation": "GeForce 900",
         "Architecture": "Maxwell 2.0",
         "MSRP": 329.0,
@@ -967,7 +982,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 6400",
+        "Name": "Radeon RX 6400",
         "Generation": "Navi II (RX 6000)",
         "Architecture": "RDNA 2.0",
         "MSRP": 159.0,
@@ -983,7 +998,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1050 Ti",
+        "Name": "GeForce GTX 1050 Ti",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 139.0,
@@ -998,7 +1013,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1050",
+        "Name": "GeForce GTX 1050",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 109.0,
@@ -1013,7 +1028,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GT 1030",
+        "Name": "GeForce GT 1030",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 79.0,
@@ -1028,7 +1043,7 @@
         }
     },
     {
-        "Name": "NVIDIA TITAN RTX",
+        "Name": "Titan RTX",
         "Generation": "GeForce 20",
         "Architecture": "Turing",
         "MSRP": 2499.0,
@@ -1043,7 +1058,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 5060 Ti 16GB",
+        "Name": "GeForce RTX 5060 Ti 16GB",
         "Generation": "GeForce 50",
         "Architecture": "Ada Lovelace",
         "MSRP": 429.0,
@@ -1058,7 +1073,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 6700",
+        "Name": "Radeon RX 6700",
         "Generation": "NAVI II",
         "Architecture": "RDNA 2.0",
         "MSRP": 0,
@@ -1074,7 +1089,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 2080 SUPER",
+        "Name": "GeForce RTX 2080 Super",
         "Generation": "GeForce 20",
         "Architecture": "Turing",
         "MSRP": 699.0,
@@ -1089,7 +1104,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 9060 XT 16GB",
+        "Name": "Radeon RX 9060 XT 16GB",
         "Generation": "NAVI IV",
         "Architecture": "RDNA 4.0",
         "MSRP": 349,
@@ -1105,7 +1120,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 5060 Ti 8GB",
+        "Name": "GeForce RTX 5060 Ti 8GB",
         "Generation": "GeForce 50",
         "Architecture": "Blackwell 2.0",
         "MSRP": 379.0,
@@ -1135,7 +1150,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 4060 Ti 8GB",
+        "Name": "GeForce RTX 4060 Ti 8GB",
         "Generation": "GeForce 40",
         "Architecture": "Ada Lovelace",
         "MSRP": 399.0,
@@ -1150,7 +1165,7 @@
         }
     },
         {
-        "Name": "NVIDIA GeForce RTX 4060 Ti 16GB",
+        "Name": "GeForce RTX 4060 Ti 16GB",
         "Generation": "GeForce 40",
         "Architecture": "Ada Lovelace",
         "MSRP": 499.0,
@@ -1180,7 +1195,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce RTX 2060",
+        "Name": "GeForce RTX 2060",
         "Generation": "GeForce 20",
         "Architecture": "Turing",
         "MSRP": 349.0,
@@ -1195,7 +1210,7 @@
         }
     },
         {
-        "Name": "NVIDIA GeForce RTX 3060 12GB",
+        "Name": "GeForce RTX 3060 12GB",
         "Generation": "GeForce 30",
         "Architecture": "Ada Lovelace",
         "MSRP": 329.0,
@@ -1255,7 +1270,7 @@
         }
     },
         {
-        "Name": "NVIDIA GeForce GTX 1070",
+        "Name": "GeForce GTX 1070",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 379.0,
@@ -1270,7 +1285,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 5500 XT 4GB",
+        "Name": "Radeon RX 5500 XT 4GB",
         "Generation": "NAVI I",
         "Architecture": "RDNA 1.0",
         "MSRP": 169,
@@ -1301,7 +1316,7 @@
         }
     },
         {
-        "Name": "NVIDIA GeForce GTX 980 Ti",
+        "Name": "GeForce GTX 980 Ti",
         "Generation": "GeForce 900",
         "Architecture": "Maxwell 2.0",
         "MSRP": 649.0,
@@ -1316,7 +1331,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 580",
+        "Name": "Radeon RX 580",
         "Generation": "Polaris (RX 500)",
         "Architecture": "GCN 4.0",
         "MSRP": 229,
@@ -1331,7 +1346,7 @@
         }
     },
     {
-        "Name": "AMD Radeon R9 FURY X",
+        "Name": "Radeon R9 FURY X",
         "Generation": "Pirate Islands",
         "Architecture": "GCN 3.0",
         "MSRP": 649,
@@ -1345,7 +1360,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 5500 XT 8GB",
+        "Name": "Radeon RX 5500 XT 8GB",
         "Generation": "NAVI I",
         "Architecture": "RDNA 1.0",
         "MSRP": 200,
@@ -1360,7 +1375,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1060 6 GB",
+        "Name": "GeForce GTX 1060 6 GB",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 299.0,
@@ -1375,7 +1390,7 @@
         }
     },
     {
-        "Name": "AMD Radeon R9 390",
+        "Name": "Radeon R9 390",
         "Generation": "Pirate Islands",
         "Architecture": "GCN 2.0",
         "MSRP": 329,
@@ -1389,7 +1404,7 @@
         }
     },
         {
-        "Name": "NVIDIA GeForce GTX 1650 GDDR6",
+        "Name": "GeForce GTX 1650 GDDR6",
         "Generation": "GeForce 16",
         "Architecture": "Turing",
         "MSRP": 149.0,
@@ -1419,7 +1434,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 570",
+        "Name": "Radeon RX 570",
         "Generation": "Arctic Islands",
         "Architecture": "GCN 4.0",
         "MSRP": 169,
@@ -1434,7 +1449,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1630",
+        "Name": "GeForce GTX 1630",
         "Generation": "GeForce 16",
         "Architecture": "Turing",
         "MSRP": 199.0,
@@ -1449,7 +1464,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 560",
+        "Name": "Radeon RX 560",
         "Generation": "Polaris (RX 500)",
         "Architecture": "GCN 4.0",
         "MSRP": 99,
@@ -1464,7 +1479,7 @@
         }
     },
     {
-        "Name": "NVIDIA GeForce GTX 1060 3GB",
+        "Name": "GeForce GTX 1060 3GB",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 199.0,
@@ -1479,7 +1494,7 @@
         }
     },
     {
-        "Name": "AMD Radeon RX 550",
+        "Name": "Radeon RX 550",
         "Generation": "Polaris (RX 500)",
         "Architecture": "GCN 4.0",
         "MSRP": 79.0,

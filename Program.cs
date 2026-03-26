@@ -64,12 +64,17 @@ if (app.Environment.IsDevelopment())
             context.Database.EnsureCreated();
 
             await SeedData.SeedBrandAndType(context);
-            await SeedData.SeedTestType(context);
+            await SeedData.SeedSource(context);
+            await SeedData.SeedResolution(context);
+            await SeedData.SeedGraphic(context);
+            await SeedData.SeedTestSubject(context);
             await SeedData.SeedGPU(context, gpufilepath);
             await SeedData.SeedCPU(context, cpufilepath);
             await SeedData.SeedRolesAndAdmin(services);
-            await SeedData.SeedCPUBenchmark2022(context, "docs/Data/CPU_2022_Benchmark@1080p.csv");
-            await SeedData.SeedCPUBenchmark2025(context, "docs/Data/CPU_2025_Benchmark@1080p.csv");
+            //await SeedData.SeedCPUBenchmark2022(context, "docs/Data/CPU_2022_Benchmark@1080p.csv");
+            //await SeedData.SeedCPUBenchmark2025(context, "docs/Data/CPU_2025_Benchmark@1080p.csv");
+            //await SeedData.SeedCPUBenchmarInterpolated(context, "docs/Data/CPU_Interpolated_Benchmark@1080p.csv");
+            await SeedData.SeedGPUBenchmark2022(context, "docs/Data/GPU_2022_Benchmark_Overall_Raster.csv");
         }
         catch (Exception ex)
         {
