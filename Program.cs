@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using pcp2p;
 using Microsoft.AspNetCore.Identity;
-using MySql.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +13,7 @@ string cpufilepath = "docs/Data/CPU_Cleaned_Data.csv";
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
 builder.Services.AddAntiforgery(options => options.HeaderName = "XSRF-TOKEN");
 

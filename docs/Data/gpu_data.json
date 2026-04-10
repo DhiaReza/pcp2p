@@ -368,23 +368,8 @@
         }
     },
     {
-        "Name": "GeForce RTX 5070",
-        "Generation": "GeForce 50",
-        "Architecture": "Blackwell 2.0",
-        "MSRP": 549.0,
-        "ReleaseDate": "04-03-2025",
-        "Brand": "nvidia",
-        "HardwareType": "gpu",
-        "Gpu": {
-            "Vram": 12,
-            "BaseClock": 2325,
-            "BoostClock": 2512,
-            "TDP": 250
-        }
-    },
-    {
         "Name": "Radeon RX 6750 XT",
-        "Generation": "Navi II (RX 6000)",
+        "Generation": "Navi II",
         "Architecture": "RDNA 2.0",
         "MSRP": 549.0,
         "ReleaseDate": "03-03-2022",
@@ -400,7 +385,7 @@
     },
     {
         "Name": "Radeon RX 7900 GRE",
-        "Generation": "Navi III (RX 7000)",
+        "Generation": "Navi III",
         "Architecture": "RDNA 3.0",
         "MSRP": 549.0,
         "ReleaseDate": "27-07-2023",
@@ -416,7 +401,7 @@
     },
     {
         "Name": "Radeon RX 6700 XT",
-        "Generation": "Navi II (RX 6000)",
+        "Generation": "Navi II",
         "Architecture": "RDNA 2.0",
         "MSRP": 479.0,
         "ReleaseDate": "03-03-2021",
@@ -477,7 +462,7 @@
     },
     {
         "Name": "Radeon RX 7800 XT",
-        "Generation": "Navi III (RX 7000)",
+        "Generation": "Navi III",
         "Architecture": "RDNA 3.0",
         "MSRP": 499.0,
         "ReleaseDate": "25-08-2023",
@@ -523,7 +508,7 @@
     },
     {
         "Name": "Radeon RX 7700 XT",
-        "Generation": "Navi III (RX 7000)",
+        "Generation": "Navi III",
         "Architecture": "RDNA 3.0",
         "MSRP": 449.0,
         "ReleaseDate": "25-08-2023",
@@ -539,7 +524,7 @@
     },
     {
         "Name": "Radeon RX 6650 XT",
-        "Generation": "Navi II (RX 6000)",
+        "Generation": "Navi II",
         "Architecture": "RDNA 2.0",
         "MSRP": 399.0,
         "ReleaseDate": "10-05-2022",
@@ -585,7 +570,7 @@
     },
     {
         "Name": "Radeon RX 6600 XT",
-        "Generation": "Navi II (RX 6000)",
+        "Generation": "Navi II",
         "Architecture": "RDNA 2.0",
         "MSRP": 379.0,
         "ReleaseDate": "30-07-2021",
@@ -601,7 +586,7 @@
     },
     {
         "Name": "Radeon RX 5700 XT",
-        "Generation": "Navi (RX 5000)",
+        "Generation": "Navi I",
         "Architecture": "RDNA 1.0",
         "MSRP": 399.0,
         "ReleaseDate": "07-07-2019",
@@ -677,7 +662,7 @@
     },
     {
         "Name": "Radeon RX 5700",
-        "Generation": "Navi (RX 5000)",
+        "Generation": "Navi I",
         "Architecture": "RDNA 1.0",
         "MSRP": 349.0,
         "ReleaseDate": "07-07-2019",
@@ -708,7 +693,7 @@
     },
     {
         "Name": "Radeon RX 7600 XT",
-        "Generation": "Navi III (RX 7000)",
+        "Generation": "Navi III",
         "Architecture": "RDNA 3.0",
         "MSRP": 329.0,
         "ReleaseDate": "08-01-2024",
@@ -724,7 +709,7 @@
     },
     {
         "Name": "Radeon RX 5600 XT",
-        "Generation": "Navi (RX 5000)",
+        "Generation": "Navi I",
         "Architecture": "RDNA 1.0",
         "MSRP": 279.0,
         "ReleaseDate": "21-01-2020",
@@ -845,7 +830,7 @@
     },
     {
         "Name": "Radeon RX 7600",
-        "Generation": "Navi III (RX 7000)",
+        "Generation": "Navi III",
         "Architecture": "RDNA 3.0",
         "MSRP": 269.0,
         "ReleaseDate": "24-05-2023",
@@ -876,7 +861,7 @@
     },
     {
         "Name": "Radeon RX 590",
-        "Generation": "Polaris (RX 500)",
+        "Generation": "Polaris",
         "Architecture": "GCN 4.0",
         "MSRP": 279.0,
         "ReleaseDate": "15-11-2018",
@@ -891,7 +876,7 @@
     },
     {
         "Name": "Radeon RX 6600",
-        "Generation": "Navi II (RX 6000)",
+        "Generation": "Navi II",
         "Architecture": "RDNA 2.0",
         "MSRP": 329.0,
         "ReleaseDate": "13-10-2021",
@@ -922,7 +907,7 @@
     },
     {
         "Name": "Radeon RX 6500 XT",
-        "Generation": "Navi II (RX 6000)",
+        "Generation": "Navi II",
         "Architecture": "RDNA 2.0",
         "MSRP": 199.0,
         "ReleaseDate": "19-01-2022",
@@ -983,7 +968,7 @@
     },
     {
         "Name": "Radeon RX 6400",
-        "Generation": "Navi II (RX 6000)",
+        "Generation": "Navi II",
         "Architecture": "RDNA 2.0",
         "MSRP": 159.0,
         "ReleaseDate": "19-01-2022",
@@ -1331,8 +1316,8 @@
         }
     },
     {
-        "Name": "Radeon RX 580",
-        "Generation": "Polaris (RX 500)",
+        "Name": "Radeon RX 580 8GB",
+        "Generation": "Polaris",
         "Architecture": "GCN 4.0",
         "MSRP": 229,
         "ReleaseDate": "18-04-2017",
@@ -1375,7 +1360,7 @@
         }
     },
     {
-        "Name": "GeForce GTX 1060 6 GB",
+        "Name": "GeForce GTX 1060 6GB",
         "Generation": "GeForce 10",
         "Architecture": "Pascal",
         "MSRP": 299.0,
@@ -1434,7 +1419,7 @@
         }
     },
     {
-        "Name": "Radeon RX 570",
+        "Name": "Radeon RX 570 4GB",
         "Generation": "Arctic Islands",
         "Architecture": "GCN 4.0",
         "MSRP": 169,
@@ -1465,7 +1450,7 @@
     },
     {
         "Name": "Radeon RX 560",
-        "Generation": "Polaris (RX 500)",
+        "Generation": "Polaris",
         "Architecture": "GCN 4.0",
         "MSRP": 99,
         "ReleaseDate": "18-04-2017",
@@ -1495,7 +1480,7 @@
     },
     {
         "Name": "Radeon RX 550",
-        "Generation": "Polaris (RX 500)",
+        "Generation": "Polaris",
         "Architecture": "GCN 4.0",
         "MSRP": 79.0,
         "ReleaseDate": "20-04-2017",

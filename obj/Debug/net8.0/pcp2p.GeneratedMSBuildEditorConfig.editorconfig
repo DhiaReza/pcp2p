@@ -34,12 +34,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/Views/Home/Catalogue.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYXRhbG9ndWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/Views/Home/Compare.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Db21wYXJlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/Views/Home/Cpu.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcHUuY3NodG1s
+[/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/Views/Home/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/Views/Home/Gpu.cshtml]
