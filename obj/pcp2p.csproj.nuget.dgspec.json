@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj": {}
+    "/home/fahrezad/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj": {}
   },
   "projects": {
-    "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj": {
+    "/home/fahrezad/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
+        "projectUniqueName": "/home/fahrezad/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
         "projectName": "pcp2p",
-        "projectPath": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
-        "packagesPath": "/home/fahreza/.nuget/packages/",
-        "outputPath": "/home/fahreza/Documents/Perkuliahan/Personal Projects/pcp2p/obj/",
+        "projectPath": "/home/fahrezad/Documents/Perkuliahan/Personal Projects/pcp2p/pcp2p.csproj",
+        "packagesPath": "/home/fahrezad/.nuget/packages/",
+        "outputPath": "/home/fahrezad/Documents/Perkuliahan/Personal Projects/pcp2p/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/fahreza/.nuget/NuGet/NuGet.Config"
+          "/home/fahrezad/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -82,6 +82,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.27, 8.0.27]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[8.0.27, 8.0.27]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -90,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.108/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

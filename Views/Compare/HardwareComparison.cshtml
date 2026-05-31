@@ -1,0 +1,271 @@
+@model List<pcp2p.Controllers.HardwareBenchmarkDto>
+@{
+    ViewData["Title"] = $"{ViewBag.HardwareType} Comparison Results";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .interpolated-badge {
+            background-color: #ffc107;
+            color: #000;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            margin-left: 0.5rem;
+            display: inline-block;
+        }
+        .original-badge {
+            background-color: #28a745;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            margin-left: 0.5rem;
+            display: inline-block;
+        }
+        .cannot-run-badge {
+            background-color: #dc3545;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            margin-left: 0.5rem;
+            display: inline-block;
+        }
+        .performance-bar {
+            height: 30px;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        .table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        .top-performer {
+            background-color: #fff3cd;
+        }
+        .back-btn {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <a href="javascript:history.back()" class="btn btn-secondary back-btn">
+                    ← Back to Selection
+                </a>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-5 mb-3">@ViewBag.HardwareType Performance Comparison</h1>
+                <p class="lead">
+                    Benchmark: <strong>@ViewBag.BenchmarkType</strong>
+                    @if (!string.IsNullOrEmpty(ViewBag.Resolution) && ViewBag.Resolution != "Default")
+                    {
+                        <span> | Resolution: <strong>@ViewBag.Resolution</strong></span>
+                    }
+                    @if (!string.IsNullOrEmpty(ViewBag.GraphicSetting) && ViewBag.GraphicSetting != "Default")
+                    {
+                        <span> | Settings: <strong>@ViewBag.GraphicSetting</strong></span>
+                    }
+                </p>
+                <div class="alert alert-info">
+                    <strong>ℹ️ Note:</strong> 
+                    <span class="badge bg-success">Original</span> = Direct benchmark from 2025 data
+                    <span class="badge bg-warning text-dark">Interpolated</span> = Estimated based on modern equivalent
+                    <span class="badge bg-danger">Cannot Run</span> = Hardware cannot run at these settings
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Performance Rankings (Highest to Lowest)</h5>
+                    </div>
+                    <div class="card-body">
+                        @if (!Model.Any())
+                        {
+                            <div class="alert alert-warning">
+                                No benchmark data available for the selected criteria.
+                            </div>
+                        }
+                        else
+                        {
+                            var validScores = Model.Where(x => !x.CouldNotRun && x.Benchmark != null).ToList();
+                            var maxScore = validScores.Any() ? validScores.Max(x => x.Benchmark.Score) : 1;
+                            
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Hardware Name</th>
+                                            <th>Brand</th>
+                                            <th>Release Year</th>
+                                            <th>MSRP</th>
+                                            <th>FPS Score</th>
+                                            <th>Value Ratio (FPS/$)</th>
+                                            <th>Performance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < Model.Count; i++)
+                                        {
+                                            var item = Model[i];
+                                            var valueRatio = (!item.CouldNotRun && item.Hardware.MSRP > 0 && item.Benchmark != null) 
+                                                ? item.Benchmark.Score / (float)item.Hardware.MSRP : 0;
+                                            var performancePercent = (!item.CouldNotRun && item.Benchmark != null && maxScore > 0) 
+                                                ? (item.Benchmark.Score / maxScore) * 100 : 0;
+                                            var releaseYear = GetHardwareReleaseYear(item.Hardware);
+                                            
+                                            <tr class="@(i == 0 && !item.CouldNotRun ? "top-performer" : "")">
+                                                <td>
+                                                    @if (item.CouldNotRun)
+                                                    {
+                                                        <span class="text-muted">N/A</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong>#@(i + 1)</strong>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @item.Hardware.Name
+                                                    @if (item.CouldNotRun)
+                                                    {
+                                                        <span class="cannot-run-badge" title="Cannot run at these settings">
+                                                            ❌ Cannot Run
+                                                        </span>
+                                                    }
+                                                    else if (item.IsInterpolated)
+                                                    {
+                                                        <span class="interpolated-badge" title="Estimated score based on modern equivalent">
+                                                            ⚡ Interpolated
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="original-badge" title="Original benchmark from 2025 data">
+                                                            ✓ Original
+                                                        </span>
+                                                    }
+                                                </td>
+                                                <td>@(item.Hardware.Brand?.Name ?? "N/A")</td>
+                                                <td>@releaseYear</td>
+                                                <td>
+                                                    @if (item.Hardware.MSRP > 0)
+                                                    {
+                                                        @($"${item.Hardware.MSRP:N0}")
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="text-muted">N/A</span>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @if (item.CouldNotRun)
+                                                    {
+                                                        <span class="text-danger fw-bold">0 (Cannot Run)</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong>@(item.Benchmark?.Score.ToString("N0") ?? "0")</strong>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @if (!item.CouldNotRun && valueRatio > 0)
+                                                    {
+                                                        <span class="text-success fw-bold">@valueRatio.ToString("N2")</span>
+                                                    }
+                                                    else if (!item.CouldNotRun && valueRatio <= 0)
+                                                    {
+                                                        <span class="text-muted">N/A</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="text-muted">-</span>
+                                                    }
+                                                </td>
+                                                <td style="width: 250px;">
+                                                    @if (!item.CouldNotRun)
+                                                    {
+                                                        <div class="performance-bar" style="width: @performancePercent%"></div>
+                                                        <small class="text-muted">@performancePercent.ToString("N0")%</small>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="performance-bar" style="width: 0%; background: #dc3545;"></div>
+                                                        <small class="text-danger">Cannot run at these settings</small>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.Any(x => x.IsInterpolated))
+        {
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">How Interpolation Works</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>For older hardware (2023 and earlier) without 2025 benchmark data, we estimate scores by:</p>
+                            <ul>
+                                <li><strong>Finding a modern equivalent</strong> - Same tier (enthusiast/high-end/mid-range/entry) and same brand</li>
+                                <li><strong>Applying generational degradation</strong> - Approximately 15% performance decrease per generation going backward</li>
+                                <li><strong>Using 2025 benchmark data</strong> as the reference point for modern hardware performance</li>
+                            </ul>
+                            <p class="mb-0 text-muted small">
+                                ⚡ <strong>Example:</strong> RTX 2060 performance is estimated based on RTX 4060 (modern equivalent) with generational adjustments.
+                                RTX 5090, 4090, and other 2023+ models use their original benchmark scores directly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+@functions {
+    private int GetHardwareReleaseYear(Hardware hardware)
+    {
+        if (hardware.ReleaseDate != default && hardware.ReleaseDate.Year > 2000)
+        {
+            return hardware.ReleaseDate.Year;
+        }
+        
+        var name = hardware.Name;
+        
+        if (name.Contains("5090")) return 2025;
+        if (name.Contains("4090") || name.Contains("4080") || name.Contains("4070") || name.Contains("4060")) return 2023;
+        if (name.Contains("3090") || name.Contains("3080") || name.Contains("3070") || name.Contains("3060")) return 2020;
+        if (name.Contains("2080") || name.Contains("2070") || name.Contains("2060")) return 2018;
+        if (name.Contains("1080") || name.Contains("1070") || name.Contains("1060")) return 2016;
+        
+        if (name.Contains("7900") || name.Contains("7800") || name.Contains("7700") || name.Contains("7600")) return 2023;
+        if (name.Contains("6900") || name.Contains("6800") || name.Contains("6700") || name.Contains("6600")) return 2020;
+        
+        return 2020;
+    }
+}

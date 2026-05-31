@@ -13,7 +13,7 @@ namespace pcp2p.Models
         public DbSet<Brand> brands {get;set;}
         public DbSet<Benchmark> benchmarks {get;set;}
         public DbSet<HardwareType> hardwareTypes {get;set;}
-        public DbSet<TestSource>  testTypes {get;set;}
+        public DbSet<TestSource>  testSource {get;set;}
         public DbSet<TestGraphic> testGraphics {get;set;}
         public DbSet<TestResolution> testResolutions {get;set;}
         public DbSet<TestSubject> testSubjects {get;set;}

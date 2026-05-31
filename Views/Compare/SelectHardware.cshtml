@@ -1,0 +1,283 @@
+@{
+    ViewData["Title"] = "Select " + ViewBag.HardwareType + " to Compare";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .selection-card {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+        .gpu-item {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .gpu-item:hover {
+            background-color: #f0f0f0;
+            transform: translateX(5px);
+        }
+        .selected-gpu {
+            background-color: #007bff20 !important;
+            border-left: 3px solid #007bff;
+        }
+        .remove-gpu {
+            cursor: pointer;
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .remove-gpu:hover {
+            color: #a71d2a;
+        }
+        .selected-list {
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card shadow selection-card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Compare @ViewBag.HardwareType Performance</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="CompareHardware" method="post">
+                    <!-- Hidden inputs for selected GPUs -->
+                    <div id="selectedIdsContainer"></div>
+                    
+                    <div class="row">
+                        <!-- Left column: Available GPUs -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Available @ViewBag.HardwareType:</label>
+                                <input type="text" id="searchInput" class="form-control mb-2" placeholder="Search..." />
+                                <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 5px;">
+                                    <div class="list-group list-group-flush" id="gpuList">
+                                        @if (ViewBag.HardwareType == "GPU" && ViewBag.GPUs != null)
+                                        {
+                                            foreach (var gpu in ViewBag.GPUs)
+                                            {
+                                                <div class="list-group-item gpu-item" data-id="@gpu.Id" data-name="@gpu.Name" data-brand="@(gpu.Brand?.Name ?? "Unknown")">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <strong>@gpu.Name</strong>
+                                                            <br/>
+                                                            <small class="text-muted">@(gpu.Brand?.Name ?? "Unknown")</small>
+                                                            @if (gpu.MSRP > 0)
+                                                            {
+                                                                <small class="text-muted"> | $@gpu.MSRP</small>
+                                                            }
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary add-gpu-btn">Add</button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else if (ViewBag.HardwareType == "CPU" && ViewBag.CPUs != null)
+                                        {
+                                            foreach (var cpu in ViewBag.CPUs)
+                                            {
+                                                <div class="list-group-item gpu-item" data-id="@cpu.Id" data-name="@cpu.Name" data-brand="@(cpu.Brand?.Name ?? "Unknown")">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <strong>@cpu.Name</strong>
+                                                            <br/>
+                                                            <small class="text-muted">@(cpu.Brand?.Name ?? "Unknown")</small>
+                                                            @if (cpu.MSRP > 0)
+                                                            {
+                                                                <small class="text-muted"> | $@cpu.MSRP</small>
+                                                            }
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary add-gpu-btn">Add</button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right column: Selected GPUs -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Selected @ViewBag.HardwareType to Compare:</label>
+                            <div id="selectedList" class="border rounded selected-list p-2 mb-3">
+                                <div class="text-muted text-center">No hardware selected. Click "Add" to select hardware to compare.</div>
+                            </div>
+                            <div class="alert alert-info small">
+                                <strong>Note:</strong> Select multiple hardware to compare their performance. Score of 0 means the hardware cannot run at these settings.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4" />
+                    
+                    <!-- Benchmark Settings -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Benchmark Type:</label>
+                        <select name="benchmarkType" class="form-select" required>
+                            <option value="">Select benchmark type...</option>
+                            @if (ViewBag.HardwareType == "GPU")
+                            {
+                                <option value="raster">Rasterization Performance</option>
+                                <option value="raytracing">Ray Tracing Performance</option>
+                            }
+                            else
+                            {
+                                <option value="singlecore">Single Core Performance</option>
+                                <option value="multicore">Multi Core Performance</option>
+                                <option value="gaming">Gaming Performance</option>
+                            }
+                        </select>
+                    </div>
+
+                    @if (ViewBag.HardwareType == "GPU")
+                    {
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Resolution:</label>
+                            <select name="resolutionId" class="form-select">
+                                <option value="">Default (1080p)</option>
+                                @if (ViewBag.Resolutions != null)
+                                {
+                                    foreach (var resolution in ViewBag.Resolutions)
+                                    {
+                                        <option value="@resolution.Id">@resolution.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Graphics Settings:</label>
+                            <select name="graphicId" class="form-select">
+                                <option value="">Default (Ultra)</option>
+                                @if (ViewBag.Graphics != null)
+                                {
+                                    foreach (var graphic in ViewBag.Graphics)
+                                    {
+                                        <option value="@graphic.Id">@graphic.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    }
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100" id="compareBtn" disabled>
+                        Compare Selected @ViewBag.HardwareType →
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedItems = [];
+        
+        function updateSelectedList() {
+            const container = document.getElementById('selectedList');
+            const idsContainer = document.getElementById('selectedIdsContainer');
+            const compareBtn = document.getElementById('compareBtn');
+            
+            if (selectedItems.length === 0) {
+                container.innerHTML = '<div class="text-muted text-center">No hardware selected. Click "Add" to select hardware to compare.</div>';
+                idsContainer.innerHTML = '';
+                compareBtn.disabled = true;
+                return;
+            }
+            
+            compareBtn.disabled = false;
+            
+            let html = '';
+            let idsHtml = '';
+            
+            selectedItems.forEach((item, index) => {
+                html += `
+                    <div class="selected-item mb-2 p-2 border rounded" data-id="${item.id}">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>${item.name}</strong>
+                                <br/>
+                                <small class="text-muted">${item.brand}</small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-danger remove-item" data-id="${item.id}">Remove</button>
+                        </div>
+                    </div>
+                `;
+                idsHtml += `<input type="hidden" name="selectedHardwareIds" value="${item.id}" />`;
+            });
+            
+            container.innerHTML = html;
+            idsContainer.innerHTML = idsHtml;
+            
+            // Add remove event listeners
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    selectedItems = selectedItems.filter(item => item.id !== id);
+                    updateSelectedList();
+                    
+                    // Reset the add button for this GPU
+                    const gpuItem = document.querySelector(`.gpu-item[data-id="${id}"]`);
+                    if (gpuItem) {
+                        const addBtn = gpuItem.querySelector('.add-gpu-btn');
+                        addBtn.textContent = 'Add';
+                        addBtn.classList.remove('btn-secondary');
+                        addBtn.classList.add('btn-outline-primary');
+                        gpuItem.classList.remove('selected-gpu');
+                    }
+                });
+            });
+        }
+        
+        // Add GPU to selection
+        document.querySelectorAll('.add-gpu-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const gpuItem = this.closest('.gpu-item');
+                const id = parseInt(gpuItem.getAttribute('data-id'));
+                const name = gpuItem.getAttribute('data-name');
+                const brand = gpuItem.getAttribute('data-brand');
+                
+                // Check if already selected
+                if (selectedItems.some(item => item.id === id)) {
+                    alert('This hardware is already selected!');
+                    return;
+                }
+                
+                selectedItems.push({ id, name, brand });
+                updateSelectedList();
+                
+                // Update button appearance
+                this.textContent = 'Added';
+                this.classList.remove('btn-outline-primary');
+                this.classList.add('btn-secondary');
+                gpuItem.classList.add('selected-gpu');
+            });
+        });
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const items = document.querySelectorAll('.gpu-item');
+            
+            items.forEach(item => {
+                const name = item.getAttribute('data-name').toLowerCase();
+                const brand = item.getAttribute('data-brand').toLowerCase();
+                
+                if (name.includes(searchTerm) || brand.includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

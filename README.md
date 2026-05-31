@@ -9,9 +9,9 @@ use their own price so that they can judge whether the device is worth it or not
 4. Data Visualization : Charts for comparing value from selected hardware
 
 ## Tech Stack :
-1. Backend : ASP.NET MVC
+1. Backend : ASP.NET 8 MVC
 2. Frontend : Bootstrap 5, Chart.js for charts
-3. Database : SQL
+3. Database : MariaDB
 
 ## Price to Performance Ratio :
 <p>The price to performance ratio will be calculated using : </p>
@@ -22,4 +22,4 @@ p2p = avg FPS / MSRP (or user defined price)
 p2p = price to performance
 
 ### Todo
-Add predicted field to benchmark 
+Implement Filetring and Page Indexing on Catalogue

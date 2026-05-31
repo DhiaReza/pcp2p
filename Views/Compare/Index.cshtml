@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Compare Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body>
+    <div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center"
+         style="transform: translateY(-120px);">
+
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h3>Choose Hardware to Compare</h3>
+            </div>
+        </div>
+        <div class="row gap-3">
+            <div class="col-auto">
+                <a asp-area=""
+                   asp-controller="Compare"
+                   asp-action="Gpu"
+                   class="btn btn-primary px-4 py-2">
+                    GPU
+                </a>
+            </div>
+            <div class="col-auto">
+                <a asp-area=""
+                   asp-controller="Compare"
+                   asp-action="Cpu"
+                   class="btn btn-primary px-4 py-2">
+                    CPU
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

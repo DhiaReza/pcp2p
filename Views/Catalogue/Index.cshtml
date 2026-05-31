@@ -9,9 +9,10 @@
     <script src="~\pcp2p\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js"></script>
 </head>
 <body>
-    <div class="container">
+  <div class="container">
+    <div class="">
       <div class="pt-2">
-        Filter By:
+        Sort By:
       </div>
       <div class="row">
         <div class="col">
@@ -36,7 +37,7 @@
                       case "expensive":
                           @:Expensive First
                           break;
-                      case "cheap":
+                      case "cheapest":
                           @:Cheap First
                           break;
                   }
@@ -48,32 +49,32 @@
             </button>
             <ul class="dropdown-menu text-center " aria-labelledby="dropdownMenuButton1">
               <li class="py-1">
-                <a class = "text-black text-decoration-none" asp-controller="Home" asp-action="Catalogue" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="name_asc">
+                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="name_asc">
                   Name A-Z
                   </a>
                 </li>
               <li class="py-1">
-                <a class = "text-black text-decoration-none" asp-controller="Home" asp-action="Catalogue" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="name_desc">
+                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="name_desc">
                   Name Z-A
                 </a>
                 </li>
               <li class="py-1">
-                <a class = "text-black text-decoration-none" asp-controller="Home" asp-action="Catalogue" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="newest">
+                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="newest">
                   Newest First
                 </a>
               </li>
               <li class="py-1">
-                <a class = "text-black text-decoration-none" asp-controller="Home" asp-action="Catalogue" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="oldest">
+                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="oldest">
                   Oldest First
                 </a>
               </li>
               <li class="py-1">
-                <a class = "text-black text-decoration-none" asp-controller="Home" asp-action="Catalogue" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="expensive">
+                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="expensive">
                   Expensive First
                 </a>
               </li>
               <li class="py-1">
-                <a class = "text-black text-decoration-none" asp-controller="Home" asp-action="Catalogue" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="cheap">
+                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="cheap">
                   Cheap First
                 </a>
               </li>
@@ -81,19 +82,20 @@
         </div>
         </div>
         <div class="col">
-          <form asp-controller="Home" asp-action="Catalogue" asp-route-sortOrder="@ViewBag.currentSort">
+          <form asp-controller="Catalogue" asp-action="Index" asp-route-sortOrder="@ViewBag.currentSort" asp-route-currentPage="@ViewBag.CurrentPage">
               <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">
                       <img src="~/img/bootstrap_icons/search.svg" alt="Search Icon" width="16" height="16" />
                   </span>
                   <input type="text" class="form-control" placeholder="Search..." value="@ViewBag.CurrentSearchString" name="searchString">
+                  <input type="hidden" name="currentPage" value="1" />
                   <button type="submit" class="btn btn-primary">Search</button>
               </div>
           </form>
         </div>
       </div>
     <div class="pt-2 vh-50">
-        <table class="table table-hover table-light text-center shadow-sm mb-4 rounded bg-white" style="background-color: #FFFFFF; border-radius: 1rem;">
+        <table class="table table-sm table-hover table-light text-center shadow-sm mb-4 rounded bg-white" style="background-color: #FFFFFF; border-radius: 1rem;">
             <thead>
                 <tr class="align-middle">
                     <th>#</th>
@@ -116,7 +118,7 @@
                         <td>
                             @{
                                 if(hw.Cpu != null){
-                                    <ul class="list-unstyled">
+                                    <ul class="list-unstyled small lh-1 mb-0">
                                         <li class="">@hw.Cpu.CoreCount Cores / @hw.Cpu.ThreadCount Threads</li>
                                         <li class="">@hw.Cpu.BaseClock GHz Base / @hw.Cpu.TurboClock GHz Turbo</li>
                                         @{
@@ -129,7 +131,7 @@
                                         }
                                     </ul>
                                 } else {
-                                    <ul class="list-unstyled">
+                                    <ul class="list-unstyled small lh-1 mb-0">
                                         <li class="">@hw.Gpu.Vram GB</li>
                                         <li class="">@hw.Gpu.BaseClock MHz Base Clock</li>          
                                         <li class="">@hw.Gpu.BoostClock MHz Boost Clock</li>    
@@ -167,6 +169,26 @@
                 }
             </tbody>
         </table>
+    </div>
+    <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @{
+                int page = 1;
+                while (page <= ViewBag.maxPage) {
+                    <li class="page-item">
+                        <a asp-controller="Catalogue" 
+                        asp-action="Index" 
+                        asp-route-currentPage="@(page)" 
+                        asp-route-searchString="@ViewBag.CurrentSearchString"
+                        asp-route-sortOrder="@ViewBag.currentSort"
+                        class="page-link">@(page)</a>
+                    </li>
+                    page++;
+                }
+            }
+        </ul>
+      </nav>
     </div>
   </div>
 </body>

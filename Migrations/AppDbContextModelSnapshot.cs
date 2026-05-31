@@ -451,7 +451,7 @@ namespace pcp2p.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("testTypes");
+                    b.ToTable("testSource");
                 });
 
             modelBuilder.Entity("pcp2p.Models.TestSubject", b =>

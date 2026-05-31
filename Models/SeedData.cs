@@ -185,7 +185,7 @@ namespace pcp2p
 
         public static async Task SeedCPUBenchmark2022(AppDbContext context, string filepath)
         {
-            TestSource source = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync();
+            TestSource source = await context.testSource.Where(b => b.Name == "original").FirstOrDefaultAsync();
             TestSubject subject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync();
             TestResolution resolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync();
 
@@ -216,7 +216,7 @@ namespace pcp2p
         }
         public static async Task SeedCPUBenchmark2025(AppDbContext context, string filepath)
         {
-            TestSource source = await context.testTypes.Where(b => b.Name == "original").FirstOrDefaultAsync();
+            TestSource source = await context.testSource.Where(b => b.Name == "original").FirstOrDefaultAsync();
             TestSubject subject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync();
             TestResolution resolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync();
 
@@ -247,7 +247,7 @@ namespace pcp2p
         }
         public static async Task SeedCPUBenchmarInterpolated(AppDbContext context, string filepath)
         {
-            TestSource source = await context.testTypes.Where(b => b.Name == "interpolated").FirstOrDefaultAsync();
+            TestSource source = await context.testSource.Where(b => b.Name == "interpolated").FirstOrDefaultAsync();
             TestSubject subject = await context.testSubjects.Where(b => b.Name == "gaming").FirstOrDefaultAsync();
             TestResolution resolution = await context.testResolutions.Where(b => b.Name == "1080p").FirstOrDefaultAsync();
 
@@ -286,7 +286,7 @@ namespace pcp2p
             var gpus = csv.GetRecords<GPU_Benchmark>().ToList();
 
             // 2. Pre-fetch common data once to avoid thousands of DB calls
-            var originalSource = await context.testTypes.FirstOrDefaultAsync(b => b.Name == "original");
+            var originalSource = await context.testSource.FirstOrDefaultAsync(b => b.Name == "original");
             var rasterSubject = await context.testSubjects.FirstOrDefaultAsync(b => b.Name == "raster");
             
             var res1080p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1080p");
@@ -360,7 +360,7 @@ namespace pcp2p
             var gpus = csv.GetRecords<GPU_Benchmark>().ToList();
 
             // 2. Pre-fetch common data once to avoid thousands of DB calls
-            var originalSource = await context.testTypes.FirstOrDefaultAsync(b => b.Name == "original");
+            var originalSource = await context.testSource.FirstOrDefaultAsync(b => b.Name == "original");
             var rasterSubject = await context.testSubjects.FirstOrDefaultAsync(b => b.Name == "raster");
             
             var res1080p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1080p");
@@ -435,7 +435,7 @@ namespace pcp2p
             var gpus = csv.GetRecords<GPU_Benchmark>().ToList();
 
             // 2. Pre-fetch common data once to avoid thousands of DB calls
-            var originalSource = await context.testTypes.FirstOrDefaultAsync(b => b.Name == "interpolated");
+            var originalSource = await context.testSource.FirstOrDefaultAsync(b => b.Name == "interpolated");
             var rasterSubject = await context.testSubjects.FirstOrDefaultAsync(b => b.Name == "raster");
             
             var res1080p = await context.testResolutions.FirstOrDefaultAsync(b => b.Name == "1080p");
