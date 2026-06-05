@@ -17,6 +17,7 @@ namespace pcp2p.Models
         public DbSet<TestGraphic> testGraphics {get;set;}
         public DbSet<TestResolution> testResolutions {get;set;}
         public DbSet<TestSubject> testSubjects {get;set;}
+        public DbSet<TestPreset> testPresets {get;set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // each hardware link to one CPU or GPU
@@ -104,6 +105,15 @@ namespace pcp2p.Models
                 .WithMany()                // A TestType can have MANY Benchmarks (or zero, depending on your logic)
                 .HasForeignKey(b => b.TestSubjectId); // The link is stored in the 'TestTypeId' column
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TestPreset>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Benchmark>()
+                .HasOne(b => b.TestPreset)
+                .WithMany()
+                .HasForeignKey(b => b.TestPresetId);
         }
     }
 }

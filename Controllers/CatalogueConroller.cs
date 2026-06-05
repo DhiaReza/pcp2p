@@ -8,7 +8,7 @@ namespace pcp2p.Controllers
     {
         private readonly ILogger<CatalogueController> _logger;
         private readonly AppDbContext _context;
-
+        public int pageSize = 10;
         private bool Locked = false;
         public CatalogueController(ILogger<CatalogueController> logger, AppDbContext context)
         {
@@ -18,15 +18,11 @@ namespace pcp2p.Controllers
         public ActionResult Index(
             string searchString,
             string sortOrder,
-            int currentPage = 1,
-            List<string>? filterGeneration = null)
+            int currentPage = 1)
         {
-            int pageSize = 10;
-
             var result = GetCpus(
                 searchString,
-                sortOrder,
-                filterGeneration,
+                sortOrder,  
                 currentPage,
                 pageSize);
 
@@ -45,10 +41,9 @@ namespace pcp2p.Controllers
 
             return View(cpus);
         }
-            public (List<Hardware> Items, int TotalCount) GetCpus(
+        public (List<Hardware> Items, int TotalCount) GetCpus(
             string searchString,
             string sortOrder,
-            List<string> filterGeneration,
             int currentPage,
             int pageSize)
         {
@@ -67,10 +62,7 @@ namespace pcp2p.Controllers
                     .ThenInclude(b => b.TestSubject)
 
                 .Include(h => h.Benchmarks)
-                    .ThenInclude(b => b.TestResolution)
-
-                .Include(h => h.Benchmarks)
-                    .ThenInclude(b => b.TestGraphic)
+                    .ThenInclude(b => b.TestPreset)
 
                 .AsQueryable();
 

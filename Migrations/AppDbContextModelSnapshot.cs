@@ -232,17 +232,16 @@ namespace pcp2p.Migrations
                     b.Property<int>("HardwareId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<float>("Score")
                         .HasColumnType("float");
 
                     b.Property<int?>("TestGraphicId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TestResolutionId")
+                    b.Property<int?>("TestPresetId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TestResolutionId")
                         .HasColumnType("int");
 
                     b.Property<int>("TestSourceId")
@@ -256,6 +255,8 @@ namespace pcp2p.Migrations
                     b.HasIndex("HardwareId");
 
                     b.HasIndex("TestGraphicId");
+
+                    b.HasIndex("TestPresetId");
 
                     b.HasIndex("TestResolutionId");
 
@@ -434,6 +435,26 @@ namespace pcp2p.Migrations
                     b.ToTable("hardwareTypes");
                 });
 
+            modelBuilder.Entity("pcp2p.Models.TestPreset", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("testPresets");
+                });
+
             modelBuilder.Entity("pcp2p.Models.TestSource", b =>
                 {
                     b.Property<int>("Id")
@@ -577,11 +598,13 @@ namespace pcp2p.Migrations
                         .WithMany()
                         .HasForeignKey("TestGraphicId");
 
+                    b.HasOne("pcp2p.Models.TestPreset", "TestPreset")
+                        .WithMany()
+                        .HasForeignKey("TestPresetId");
+
                     b.HasOne("pcp2p.TestResolution", "TestResolution")
                         .WithMany()
-                        .HasForeignKey("TestResolutionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TestResolutionId");
 
                     b.HasOne("pcp2p.Models.TestSource", "TestSource")
                         .WithMany()
@@ -598,6 +621,8 @@ namespace pcp2p.Migrations
                     b.Navigation("Hardware");
 
                     b.Navigation("TestGraphic");
+
+                    b.Navigation("TestPreset");
 
                     b.Navigation("TestResolution");
 

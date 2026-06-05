@@ -104,7 +104,7 @@
                     <th>MSRP</th>
                     <th>Spesification</th>
                     <th>Benchmark Availability</th>
-                    <th>_</th>              
+                    <th>_</th>
                 </tr>
             </thead>
             <tbody class="align-middle">
@@ -151,7 +151,7 @@
                                         <div class="accordion-body bg-light rounded p-3 text-dark">
                                             <ul class="list-unstyled text-capitalize mb-0">
                                                 @foreach(Benchmark bench in hw.Benchmarks){
-                                                    <li class="fs-6">@bench.Date @bench.TestSubject.Name @bench.TestResolution.Name</li>
+                                                    <li class="fs-6">@bench.Date @bench.TestSubject.Name @bench.TestPreset.Name</li>
                                                 }
                                             </ul>
                                         </div>

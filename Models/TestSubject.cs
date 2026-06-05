@@ -6,7 +6,8 @@ namespace pcp2p.Models
     {
         [Key]
         public int Id {get;set;}
-        // set to gaming, raster, etc
+        // for GPU, set to raster, raytracing
+        // for CPU set to gaming, single thread, and multi thread
         public string Name {get;set;}
     }
 }

@@ -62,7 +62,8 @@ if (app.Environment.IsDevelopment())
             
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-
+            
+            await SeedData.SeedTestPreset(context);
             await SeedData.SeedBrandAndType(context);
             await SeedData.SeedSource(context);
             await SeedData.SeedResolution(context);
@@ -71,12 +72,8 @@ if (app.Environment.IsDevelopment())
             await SeedData.SeedGPU(context, gpufilepath);
             await SeedData.SeedCPU(context, cpufilepath);
             await SeedData.SeedRolesAndAdmin(services);
-            await SeedData.SeedCPUBenchmark2022(context, "docs/Data/CPU_2022_Benchmark@1080p.csv");
-            await SeedData.SeedCPUBenchmark2025(context, "docs/Data/CPU_2025_Benchmark@1080p.csv");
-            await SeedData.SeedCPUBenchmarInterpolated(context, "docs/Data/CPU_Interpolated_Benchmark@1080p.csv");
-            await SeedData.SeedGPUBenchmark2022(context, "docs/Data/GPU_2022_Benchmark_Overall_Raster.csv");
-            await SeedData.SeedGPUBenchmark2025(context, "docs/Data/GPU_2025_Benchmark_Overall_Raster.csv");
-            await SeedData.SeedGPUBenchmarkInterpolated(context, "docs/Data/GPU_Interpolated_Benchmark_Overall_Raster.csv");
+            await SeedData.SeedGPUBenchmark(2022, "raster", "docs/Data/GPU_2022_Benchmark_Overall_Raster.csv", context);
+            await SeedData.SeedGPUBenchmark(2025, "raster", "docs/Data/GPU_2025_Benchmark_Overall_Raster.csv", context);
         }
         catch (Exception ex)
         {
