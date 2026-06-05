@@ -19,17 +19,17 @@
         </div>
         <div class="row gap-3">
             <div class="col-auto">
-                <a asp-area=""
-                   asp-controller="Compare"
-                   asp-action="Gpu"
+                <a asp-controller="Compare"
+                   asp-action="SelectHardware"
+                   asp-route-hwtypeid="1"
                    class="btn btn-primary px-4 py-2">
                     GPU
                 </a>
             </div>
             <div class="col-auto">
-                <a asp-area=""
-                   asp-controller="Compare"
-                   asp-action="Cpu"
+                <a asp-controller="Compare"
+                   asp-action="SelectHardware"
+                   asp-route-hwtypeid="2"
                    class="btn btn-primary px-4 py-2">
                     CPU
                 </a>
