@@ -1,3 +1,5 @@
+@model IEnumerable<HardwareComparisonDTO>;
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +8,41 @@
 </head>
     <body>
         <div class="container">
-    
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Released Date</th>
+                    <th scope="col">TDP</th>
+                    <th scope="col">Vram</th>
+                    <th scope="col">FPS</th>
+                    <th scope="col">MSRP</th>
+                    <th scope="col">FPS/Price</th>
+                    <th scope="col">Percent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @{
+                        int num = 1;
+                        foreach(var items in Model)
+                        {
+                            <tr>
+                                <th scope="row">@num</th>
+                                <td>@items.Hw.Name</td>
+                                <td>@items.Hw.ReleaseDate.ToString("MMM yyyy")</td>
+                                <td>@items.Hw.TDP W</td>
+                                <td>@items.Gpu.Vram GB</td>
+                                <td>@items.Score.ToString("F1")</td>
+                                <td>$@items.Hw.MSRP</td>
+                                <td>@items.P2P.ToString("F3")</td>
+                                <td>@items.P2PPercent.ToString("F1")%</td>
+                            </tr>
+                            num+=1;
+                        }
+                    }
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
