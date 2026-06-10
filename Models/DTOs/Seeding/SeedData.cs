@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using CsvHelper;
 using System.Globalization;
 using Microsoft.VisualBasic;
+using System.Runtime.CompilerServices;
 
 namespace pcp2p
 {
@@ -182,7 +183,7 @@ namespace pcp2p
                     Date = year,
                     TestSourceId = testSource,
                     TestSubjectId = testSubject,
-                    Score = benchmark.Medium1080p,
+                    Score = benchmark.Ultra1080p,
                     TestPresetId = preset1080pult,
                 });
 
@@ -193,7 +194,7 @@ namespace pcp2p
                     Date = year,
                     TestSourceId = testSource,
                     TestSubjectId = testSubject,
-                    Score = benchmark.Medium1080p,
+                    Score = benchmark.Ultra1440p,
                     TestPresetId = preset1440pult,
                 });
 
@@ -204,13 +205,50 @@ namespace pcp2p
                     Date = year,
                     TestSourceId = testSource,
                     TestSubjectId = testSubject,
-                    Score = benchmark.Medium1080p,
+                    Score = benchmark.Ultra4K,
                     TestPresetId = preset4kult,
                 });
                 Console.WriteLine($"Added {benchmark.Name} to Benchmark");
             }
             await context.SaveChangesAsync();
             Console.WriteLine($"Finished adding {year} {subject} benchmark entry");
+        }
+
+        public static async Task SeedCPUBenchmark(AppDbContext context, string pathfile, string subject, int year)
+        {
+                        // read csv file
+            var reader = new StreamReader(pathfile);
+            // create csv reader object
+            var csv = new CsvReader(reader);
+            //use mapping
+            csv.Configuration.RegisterClassMap<CPU_Benchmark_Map>();
+            //csv reader object to list
+            var cpubenchmark = csv.GetRecords<CPU_Benchmark>().ToList();
+
+            // declare repated use variable
+            int testSubjectId = await context.testSubjects.Where(b => b.Name == subject).Select(x => x.Id).FirstOrDefaultAsync();
+            var testSourceid = await context.testSource.Where(b => b.Name == "original").Select(b => b.Id).FirstOrDefaultAsync();
+
+            foreach(var cpu in cpubenchmark)
+            {
+                int hwid = await context.Hardwares.Where(b => b.Name == cpu.Name).Select(x => x.Id).FirstOrDefaultAsync();
+                if (hwid == 0)
+                {
+                    Console.WriteLine($"Hardware not found: {cpu.Name}");
+                    continue;
+                }
+                context.benchmarks.Add(new Benchmark
+                {
+                    HardwareId = hwid,
+                    Date = year,
+                    TestSubjectId = testSubjectId,
+                    TestSourceId = testSourceid,
+                    Score = cpu.FPS,
+                });
+                Console.WriteLine($"Successfully added {cpu.Name} to benchmark");
+            }
+            await context.SaveChangesAsync();
+            Console.WriteLine($"Finished adding {year} {subject} benchmark entries");
         }
 
         public static async Task SeedRolesAndAdmin(IServiceProvider serviceProvider)

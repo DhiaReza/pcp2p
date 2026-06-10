@@ -13,6 +13,7 @@ namespace pcp2p.Models
         public int? ThreadCount {get;set;}
         public string? Socket {get;set;}
         public string? Generation {get;set;}
+        public DateOnly ReleaseDate {get;set;}
         
     }
 }

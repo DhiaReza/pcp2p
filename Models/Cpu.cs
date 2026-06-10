@@ -20,7 +20,5 @@ namespace pcp2p.Models
         public float L1_Cache {get;set;}
         public float L2_Cache {get;set;}
         public float L3_Cache {get;set;}
-        
-        
     }
 }

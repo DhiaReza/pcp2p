@@ -74,6 +74,8 @@ if (app.Environment.IsDevelopment())
             await SeedData.SeedRolesAndAdmin(services);
             await SeedData.SeedGPUBenchmark(2022, "raster", "docs/Data/GPU_2022_Benchmark_Overall_Raster.csv", context);
             await SeedData.SeedGPUBenchmark(2025, "raster", "docs/Data/GPU_2025_Benchmark_Overall_Raster.csv", context);
+            await SeedData.SeedCPUBenchmark(context, "docs/Data/CPU_2022_Benchmark_Gaming@1080p.csv", "gaming", 2022);
+            await SeedData.SeedCPUBenchmark(context, "docs/Data/CPU_2025_Benchmark_Gaming@1080p.csv", "gaming", 2025);
         }
         catch (Exception ex)
         {

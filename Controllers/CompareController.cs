@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using Microsoft.VisualBasic;
 using pcp2p.Models;
@@ -19,6 +20,7 @@ namespace pcp2p.Controllers
         private readonly AppDbContext _context;
         public SelectHardwareDTO hw;
         public int pageSize = 10;
+        double factor { get; set; } = 1.0;
         public CompareController(ILogger<CompareController> logger, AppDbContext context)
         {
             _logger = logger;
@@ -29,33 +31,11 @@ namespace pcp2p.Controllers
         {
             return View();
         }
-
-        // GPU Action - shows GPU selection interface
-        // public async Task<IActionResult> Gpu()
-        // {            
-        //     SelectHardwareDTO select = new SelectHardwareDTO()
-        //     {
-        //         hardwares = _context.Hardwares.Where(b => b.HardwareType.Name == "gpu").ToList()
-        //         testSubjects = _context.testSubjects.ToList();
-        //     }
-        //     return View("SelectHardware");
-        // }
-
-        // CPU Action - shows CPU selection interface
-        // public async Task<IActionResult> Cpu()
-        // {
-            
-        //     return View("SelectHardware");
-        // }
-        // public async Task<IActionResult> Gpu()  
-        // {
-        //     int hwtype = 1;
-        //     var data = GetHardwareSelection(hwtype);
-        //     return View("SelectHardware", data);
-        // }
         public IActionResult SelectHardware(int hwtypeid)
         {
+
             hw = GetHardwareSelection(hwtypeid);
+            hw.hardwares = hw.hardwares.OrderByDescending(b => b.ReleaseDate).ToList();
 
             return View(hw);
         }
@@ -65,7 +45,6 @@ namespace pcp2p.Controllers
             int subjectid,
             int hwtypeid)
         {
-            List<HardwareComparisonDTO> listScores = [];
 
             // Validation
             if (hardwareids == null || !hardwareids.Any())
@@ -89,78 +68,131 @@ namespace pcp2p.Controllers
                 return View("SelectHardware", hw);
             }
 
-            // ============================================
-            // GPU ONLY LOGIC - Currently hwtypeid == 1 is GPU
-            // TODO: When adding CPU, hwtypeid == 2 will be CPU
-            // ============================================
-            
+            List<HardwareComparisonDTO> HardwareComparison = await GetHardwareComparison(hardwareids, presetid, subjectid, hwtypeid);
+            if (hwtypeid == 1)
+            {
+                ViewBag.Preset = await _context.testPresets
+                    .Where(b => b.Id == presetid)
+                    .Select(b => b.Name)
+                    .FirstOrDefaultAsync();
+
+                ViewBag.Subject = await _context.testSubjects
+                    .Where(b => b.Id == subjectid)
+                    .Select(b => b.Name)
+                    .FirstOrDefaultAsync();
+                ViewBag.HardwareId = await _context.hardwareTypes
+                    .Where(b => b.Id == hwtypeid)
+                    .Select(b => b.Id)
+                    .FirstOrDefaultAsync();
+
+                HardwareComparison = HardwareComparison
+                    .OrderByDescending(b => b.P2P)
+                    .ToList();
+            }
+            else if (hwtypeid == 2)
+            {
+                ViewBag.Preset = await _context.testPresets
+                    .Where(b => b.Id == presetid)
+                    .Select(b => b.Name)
+                    .FirstOrDefaultAsync();
+
+                ViewBag.Subject = await _context.testSubjects
+                    .Where(b => b.Id == subjectid)
+                    .Select(b => b.Name)
+                    .FirstOrDefaultAsync();
+                ViewBag.HardwareId = await _context.hardwareTypes
+                    .Where(b => b.Id == hwtypeid)
+                    .Select(b => b.Id)
+                    .FirstOrDefaultAsync();
+
+                HardwareComparison = HardwareComparison
+                    .OrderByDescending(b => b.P2P)
+                    .ToList();
+            }
+            return View(HardwareComparison);
+        }
+
+        // get hardwarecomparisonDTO data
+        public async Task<List<HardwareComparisonDTO>> GetHardwareComparison(List<int>? hardwareids,
+            int presetid,
+            int subjectid,
+            int hwtypeid)
+        {
+            var availabilityResults = new Dictionary<int, BenchmarkAvailability>();
+            bool allHave2025 = true;
+            bool allHave2022 = true;
+            bool needScaling = false;
+
+            foreach (int hwId in hardwareids)
+            {
+                var availability = await GetBenchmarkAvailability(hwId, presetid, subjectid);
+
+                availabilityResults[hwId] = availability;
+
+                bool has2025 =
+                    availability == BenchmarkAvailability.Both ||
+                    availability == BenchmarkAvailability.Only2025;
+
+                bool has2022 =
+                    availability == BenchmarkAvailability.Both ||
+                    availability == BenchmarkAvailability.Only2022;
+
+                if (!has2025)
+                    allHave2025 = false;
+
+                if (!has2022)
+                    allHave2022 = false;
+            }
+            bool useFactor = false;
+
+            if (allHave2025)
+            {
+                // everyone has 2025
+                factor = 1.0;
+            }
+            else if (allHave2022)
+            {
+                // everyone only has 2022-compatible data
+                factor = 1.0;
+            }
+            else
+            {
+                // mixed generation comparison
+                factor = await GetGPUAnchorFactor(presetid, subjectid);
+                useFactor = true;
+            }
+            // else
+            // {
+            //     if (!hasAnyBoth)
+            //     {
+            //         throw new Exception(
+            //             "Cannot scale 2022 hardware without overlapping benchmark data."
+            //         );
+            //     }
+
+            //     factor = await GetGPUAnchorFactor(presetid, subjectid);
+
+            //     useFactor = true;
+            // }
+
+            ViewBag.Factor = factor;
+
+            List<HardwareComparisonDTO> listScores = [];
             if (hwtypeid == 1) // GPU
             {
-                // Check availability for all GPUs
-                var availabilityResults = new Dictionary<int, BenchmarkAvailability>();
-                bool hasOnly2022 = true;
-                bool hasOnly2025 = true;
-                bool hasBoth = false;
-
+                // Check benchmark availability for all GPUs
+                // foreach hardware loop starts here
                 foreach (int hwId in hardwareids)
                 {
-                    var availability = await GetBenchmarkAvailability(hwId, presetid, subjectid);
-                    availabilityResults[hwId] = availability;
-                    
-                    if (availability == BenchmarkAvailability.Both) 
-                    {
-                        hasBoth = true;
-                        hasOnly2022 = false;
-                        hasOnly2025 = false;
-                    }
-                    else if (availability == BenchmarkAvailability.Only2022)
-                    {
-                        hasOnly2025 = false;
-                    }
-                    else if (availability == BenchmarkAvailability.Only2025)
-                    {
-                        hasOnly2022 = false;
-                    }
-                    else if (availability == BenchmarkAvailability.None)
-                    {
-                        ModelState.AddModelError("hardwares", $"GPU ID {hwId} has no benchmarks for the selected criteria");
-                        var hw = GetHardwareSelection(hwtypeid);
-                        return View("SelectHardware", hw);
-                    }
-                }
+                    double baseScore = 0;
 
-                double factor = 1.0;
-                bool use2025Only = false;
-                
-                // Determine which scores to use for GPUs
-                if (hasBoth || (hasOnly2025 && hasOnly2022))
-                {
-                    // Mix of GPU types - need to normalize using factor
-                    factor = await GetGPUAnchorFactor(presetid, subjectid);
-                    use2025Only = false;
-                }
-                else if (hasOnly2025)
-                {
-                    // All GPUs have only 2025 benchmarks
-                    use2025Only = true;
-                    factor = 1.0;
-                }
-                else if (hasOnly2022)
-                {
-                    // All GPUs have only 2022 benchmarks
-                    use2025Only = false;
-                    factor = 1.0;
-                }
-
-                // Calculate scores for each GPU
-                foreach (int hwId in hardwareids)
-                {
-                    double baseScore;
                     var availability = availabilityResults[hwId];
-                    
-                    if (use2025Only || availability == BenchmarkAvailability.Only2025)
+
+                    // If hardware has 2025
+                    if (availability == BenchmarkAvailability.Both ||
+                        availability == BenchmarkAvailability.Only2025)
                     {
-                        // Use 2025 score directly
+                        // Always prioritize 2025
                         baseScore = await _context.benchmarks
                             .Where(b => b.HardwareId == hwId &&
                                         b.TestPresetId == presetid &&
@@ -168,42 +200,49 @@ namespace pcp2p.Controllers
                                         b.Date == 2025)
                             .AverageAsync(b => (double?)b.Score) ?? 0;
                     }
-                    else if (availability == BenchmarkAvailability.Both && hasOnly2022 == false && hasOnly2025 == false)
+                    else if (availability == BenchmarkAvailability.Only2022)
                     {
-                        // Mixed scenario - use 2022 score with factor
                         double score2022 = await _context.benchmarks
                             .Where(b => b.HardwareId == hwId &&
                                         b.TestPresetId == presetid &&
                                         b.TestSubjectId == subjectid &&
                                         b.Date == 2022)
                             .AverageAsync(b => (double?)b.Score) ?? 0;
-                        baseScore = score2022 * factor;
+
+                        baseScore = useFactor
+                            ? score2022 * factor
+                            : score2022;
                     }
-                    else // Only2022 or all have 2022
+                    else
                     {
-                        // Use 2022 score directly
+                        // No GPU has both years
+                        // Use native scores directly
+
+                        int targetYear = availability == BenchmarkAvailability.Only2025
+                            ? 2025
+                            : 2022;
+
                         baseScore = await _context.benchmarks
                             .Where(b => b.HardwareId == hwId &&
                                         b.TestPresetId == presetid &&
                                         b.TestSubjectId == subjectid &&
-                                        b.Date == 2022)
+                                        b.Date == targetYear)
                             .AverageAsync(b => (double?)b.Score) ?? 0;
                     }
-                    
-                    // Get price and hardware info
+
                     decimal price = await _context.Hardwares
                         .Where(b => b.Id == hwId)
                         .Select(b => b.MSRP)
                         .FirstOrDefaultAsync();
-                        
+
                     var hardware = await _context.Hardwares
                         .FirstOrDefaultAsync(b => b.Id == hwId);
-                        
+
                     var gpu = await _context.gpus
                         .Where(b => b.HardwareId == hwId)
                         .FirstOrDefaultAsync();
 
-
+                    int? benchDate = await _context.benchmarks.Where(b => b.HardwareId == hwId).Select(b => b.Date).FirstOrDefaultAsync();
 
                     listScores.Add(new HardwareComparisonDTO
                     {
@@ -211,53 +250,45 @@ namespace pcp2p.Controllers
                         Gpu = gpu,
                         Score = baseScore,
                         P2P = price > 0 ? baseScore / (double)price : 0,
+                        BenchDate = benchDate,
                     });
-
-                    double bestP2P = listScores.Max(b => b.P2P);
-
-                    foreach (var item in listScores)
-                    {
-                        item.P2PPercent = (item.P2P / bestP2P) * 100;
-                    }
-
                 }
             }
-            // ============================================
-            // FUTURE CPU CODE - ADD CPU LOGIC HERE
-            // ============================================
-            // TODO: Add CPU logic when hwtypeid == 2
-            // else if (hwtypeid == 2) // CPU
-            // {
-            //     // Similar logic as GPU but using CPU anchor factor
-            //     // double factor = await GetCPUAnchorFactor(presetid, subjectid);
-            //     // ... rest of CPU comparison logic
-            // }
-            
-            ViewBag.Preset = await _context.testPresets
-                .Where(b => b.Id == presetid)
-                .Select(b => b.Name)
-                .FirstOrDefaultAsync();
-                
-            ViewBag.Subject = await _context.testSubjects
-                .Where(b => b.Id == subjectid)
-                .Select(b => b.Name)
-                .FirstOrDefaultAsync();
-            ViewBag.HardwareId = await _context.hardwareTypes
-                .Where(b => b.Id == hwtypeid)
-                .Select(b => b.Id)
-                .FirstOrDefaultAsync();
+            else if (hwtypeid == 2)
+            {
+                // ============================================
+                // GPU ONLY LOGIC - Currently hwtypeid == 1 is GPU
+                // TODO: When adding CPU, hwtypeid == 2 will be CPU
+                // ============================================
 
-            listScores = listScores
-                .OrderByDescending(b => b.P2P)
-                .ToList();
-            return View(listScores);
+                // ============================================
+                // FUTURE CPU CODE - ADD CPU LOGIC HERE
+                // ============================================
+                // TODO: Add CPU logic when hwtypeid == 2
+                // else if (hwtypeid == 2) // CPU
+                // {
+                //     // Similar logic as GPU but using CPU anchor factor
+                //     // double factor = await GetCPUAnchorFactor(presetid, subjectid);
+                //     // ... rest of CPU comparison logic
+                // }
+            }
+            double bestP2P = listScores.Max(b => b.P2P);
+
+            foreach (var item in listScores)
+            {
+                item.P2PPercent = bestP2P > 0
+                    ? (item.P2P / bestP2P) * 100
+                    : 0;
+            }
+            return listScores;
         }
         // get hardware selection data
         public SelectHardwareDTO GetHardwareSelection(int hwTypeId)
         {
-            SelectHardwareDTO hw;
-            if(hwTypeId == 1)
+
+            if (hwTypeId == 1)
             {
+                SelectHardwareDTO hw;
                 hw = new SelectHardwareDTO
                 {
                     hwtypeid = hwTypeId,
@@ -269,7 +300,8 @@ namespace pcp2p.Controllers
                             Name = b.Name,
                             Vram = b.Gpu.Vram,
                             MSRP = b.MSRP,
-                            Generation = b.Gpu.Generation
+                            Generation = b.Gpu.Generation,
+                            ReleaseDate = b.ReleaseDate
                         })
                         .ToList(),
 
@@ -277,11 +309,12 @@ namespace pcp2p.Controllers
                         .Where(b => b.Name == "raster" || b.Name == "raytracing")
                         .ToList(),
 
-                    testPresets = _context.testPresets.ToList()
+                    testPresets = _context.testPresets.ToList(),
                 };
             }
-            else
+            else if (hwTypeId == 2)
             {
+                SelectHardwareDTO hw;
                 hw = new SelectHardwareDTO
                 {
                     hwtypeid = hwTypeId,
@@ -291,19 +324,20 @@ namespace pcp2p.Controllers
                         {
                             Id = b.Id,
                             Name = b.Name,
-                            Vram = b.Gpu.Vram,
                             MSRP = b.MSRP,
-                            Generation = b.Gpu.Generation
+
+                            Generation = b.Cpu.Generation,
+                            Socket = b.Cpu.Socket,
+                            ReleaseDate = b.ReleaseDate
                         })
                         .ToList(),
 
                     testSubjects = _context.testSubjects
-                        .Where(b => b.Name == "raster" || b.Name == "raytracing")
+                        .Where(b => b.Name == "gaming" || b.Name == "multicore" || b.Name == "multicore")
                         .ToList(),
-
-                    testPresets = _context.testPresets.ToList()
                 };
             }
+
             return hw;
         }
 
@@ -322,22 +356,22 @@ namespace pcp2p.Controllers
                 .Where(b => b.Name.Contains("4060"))
                 .Select(b => b.Id)
                 .FirstOrDefaultAsync();
-                
+
             int rtx4090id = await _context.Hardwares
                 .Where(b => b.Name.Contains("4090"))
                 .Select(b => b.Id)
                 .FirstOrDefaultAsync();
-                
+
             int rtx4070id = await _context.Hardwares
                 .Where(b => b.Name.Contains("4070"))
                 .Select(b => b.Id)
                 .FirstOrDefaultAsync();
-                
+
             int rx7700id = await _context.Hardwares
                 .Where(b => b.Name.Contains("7700"))
                 .Select(b => b.Id)
                 .FirstOrDefaultAsync();
-                
+
             int rx7800id = await _context.Hardwares
                 .Where(b => b.Name.Contains("7800"))
                 .Select(b => b.Id)
@@ -346,16 +380,16 @@ namespace pcp2p.Controllers
             var anchorGpus = new List<int> { rtx4060id, rtx4090id, rtx4070id, rx7700id, rx7800id }
                 .Where(id => id > 0) // Only include valid IDs
                 .ToList();
-            
+
             var factors = new List<double>();
-            
-            foreach(int gpuId in anchorGpus)
+
+            foreach (int gpuId in anchorGpus)
             {
                 double currentFact = await GetFactor(gpuId, presetid, subjectid);
                 if (currentFact > 0)
                     factors.Add(currentFact);
             }
-            
+
             return factors.Any() ? factors.Average() : 1.0;
         }
         // ============================================
@@ -371,18 +405,18 @@ namespace pcp2p.Controllers
         //     //     .Where(b => b.Name.Contains("13900K"))
         //     //     .Select(b => b.Id)
         //     //     .FirstOrDefaultAsync();
-        //     //     
+        //     //
         //     // var anchorCpus = new List<int> { cpuAnchor1Id, cpuAnchor2Id };
-        //     // 
+        //     //
         //     // var factors = new List<double>();
-        //     // 
+        //     //
         //     // foreach(int cpuId in anchorCpus)
         //     // {
         //     //     double currentFact = await GetFactor(cpuId, presetid, subjectid);
         //     //     if (currentFact > 0)
         //     //         factors.Add(currentFact);
         //     // }
-        //     // 
+        //     //
         //     // return factors.Any() ? factors.Average() : 1.0;
         // }
 
@@ -410,7 +444,7 @@ namespace pcp2p.Controllers
                 return 0;
 
             return score2025 / score2022;
-}
+        }
 
         // public async Task<List<int>> GetScore(int hwid)
         // {
@@ -420,17 +454,17 @@ namespace pcp2p.Controllers
         public async Task<BenchmarkAvailability> GetBenchmarkAvailability(int hwid, int presetid, int subjectid)
         {
             bool has2022 = await _context.benchmarks
-                .AnyAsync(b => b.HardwareId == hwid && 
-                            b.TestPresetId == presetid && 
-                            b.TestSubjectId == subjectid && 
+                .AnyAsync(b => b.HardwareId == hwid &&
+                            b.TestPresetId == presetid &&
+                            b.TestSubjectId == subjectid &&
                             b.Date == 2022);
-            
+
             bool has2025 = await _context.benchmarks
-                .AnyAsync(b => b.HardwareId == hwid && 
-                            b.TestPresetId == presetid && 
-                            b.TestSubjectId == subjectid && 
+                .AnyAsync(b => b.HardwareId == hwid &&
+                            b.TestPresetId == presetid &&
+                            b.TestSubjectId == subjectid &&
                             b.Date == 2025);
-            
+
             if (has2022 && has2025) return BenchmarkAvailability.Both;
             if (has2022 && !has2025) return BenchmarkAvailability.Only2022;
             if (!has2022 && has2025) return BenchmarkAvailability.Only2025;

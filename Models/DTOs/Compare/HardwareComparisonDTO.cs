@@ -12,5 +12,6 @@ namespace pcp2p.Models
         public double Score {get;set;}
         public double P2P {get;set;}
         public double P2PPercent {get;set;}
+        public int? BenchDate {get;set;}
     }    
 }
