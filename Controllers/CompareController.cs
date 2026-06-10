@@ -285,10 +285,9 @@ namespace pcp2p.Controllers
         // get hardware selection data
         public SelectHardwareDTO GetHardwareSelection(int hwTypeId)
         {
-
+            SelectHardwareDTO hw = new SelectHardwareDTO();
             if (hwTypeId == 1)
             {
-                SelectHardwareDTO hw;
                 hw = new SelectHardwareDTO
                 {
                     hwtypeid = hwTypeId,
@@ -314,7 +313,6 @@ namespace pcp2p.Controllers
             }
             else if (hwTypeId == 2)
             {
-                SelectHardwareDTO hw;
                 hw = new SelectHardwareDTO
                 {
                     hwtypeid = hwTypeId,
@@ -333,11 +331,10 @@ namespace pcp2p.Controllers
                         .ToList(),
 
                     testSubjects = _context.testSubjects
-                        .Where(b => b.Name == "gaming" || b.Name == "multicore" || b.Name == "multicore")
+                        .Where(b => b.Name == "gaming" || b.Name == "singlecore" || b.Name == "multicore")
                         .ToList(),
                 };
             }
-
             return hw;
         }
 

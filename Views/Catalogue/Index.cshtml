@@ -60,29 +60,29 @@
                 </li>
               <li class="py-1">
                 <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="newest">
-                  Newest First
+                  Newest
                 </a>
               </li>
               <li class="py-1">
                 <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="oldest">
-                  Oldest First
+                  Oldest
                 </a>
               </li>
               <li class="py-1">
                 <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="expensive">
-                  Expensive First
+                  Expensive
                 </a>
               </li>
               <li class="py-1">
-                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="cheap">
-                  Cheap First
+                <a class = "text-black text-decoration-none" asp-controller="Catalogue" asp-action="Index" asp-route-searchString="@ViewBag.CurrentSearchString" asp-route-sortOrder="cheapest">
+                  Cheapest
                 </a>
               </li>
             </ul>
         </div>
         </div>
         <div class="col">
-          <form asp-controller="Catalogue" asp-action="Index" asp-route-sortOrder="@ViewBag.currentSort" asp-route-currentPage="@ViewBag.CurrentPage">
+          <form asp-controller="Catalogue" asp-action="Index" asp-route-sortOrder="@ViewBag.CurrentSort" asp-route-currentPage="@ViewBag.CurrentPage">
               <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">
                       <img src="~/img/bootstrap_icons/search.svg" alt="Search Icon" width="16" height="16" />
@@ -150,9 +150,21 @@
                                     <div id="collapse-@hw.Id" class="accordion-collapse collapse" aria-labelledby="heading-@hw.Id" data-bs-parent="#accordion-@hw.Id">
                                         <div class="accordion-body bg-light rounded p-3 text-dark">
                                             <ul class="list-unstyled text-capitalize mb-0">
-                                                @foreach(Benchmark bench in hw.Benchmarks){
-                                                    <li class="fs-6">@bench.Date @bench.TestSubject.Name @bench.TestPreset.Name</li>
-                                                }
+                                                @{
+                                                    if(hw.HardwareTypeId == 1)
+                                                    {
+                                                        @foreach(Benchmark bench in hw.Benchmarks){
+                                                            <li class="fs-6">@bench.Date @bench.TestSubject.Name @bench.TestPreset.Name</li>
+                                                        }
+                                                    }
+                                                    else if(hw.HardwareTypeId == 2)
+                                                    {
+                                                        @foreach(Benchmark bench in hw.Benchmarks){
+                                                            <li class="fs-6">@bench.Date @bench.TestSubject.Name</li>
+                                                        }
+                                                    }
+                                                } 
+
                                             </ul>
                                         </div>
                                     </div>
@@ -181,7 +193,7 @@
                         asp-action="Index" 
                         asp-route-currentPage="@(page)" 
                         asp-route-searchString="@ViewBag.CurrentSearchString"
-                        asp-route-sortOrder="@ViewBag.currentSort"
+                        asp-route-sortOrder="@ViewBag.CurrentSort"
                         class="page-link">@(page)</a>
                     </li>
                     page++;
